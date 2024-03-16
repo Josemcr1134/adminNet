@@ -1,0 +1,200 @@
+<!-- Off-canvas menu for mobile, show/hide based on off-canvas menu state. -->
+<div class="fixed inset-0 flex z-40 lg:hidden" role="dialog" *ngIf="sidebar === true" aria-modal="true">
+
+    <div class="fixed inset-0 bg-gray-600 bg-opacity-75" aria-hidden="true"></div>
+    <div class="relative flex-1 flex flex-col max-w-xs w-full pt-5 pb-4 bg-primary">
+        <div class="absolute top-0 right-0 -mr-12 pt-2">
+            <button (click)="showSideBarMenu()" type="button" class="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+        <span class="sr-only">Close sidebar</span>
+        <!-- Heroicon name: outline/x -->
+        <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+        </div>
+
+        <div class="flex-shrink-0 flex items-center px-4">
+            <img class="h-8 w-auto" src="assets/images/logo-netcare-horizontal-nuevo.png" alt="Netcare  logo">
+        </div>
+        <nav class="mt-5 flex-shrink-0 h-full divide-y divide-cyan-800 overflow-y-auto" aria-label="Sidebar">
+            <div class="px-2 space-y-1">
+
+                <!-- Current: "bg-cyan-800 text-white", Default: "text-cyan-100 hover:text-white hover:bg-cyan-600" -->
+                <a [routerLink]="['/Dashboard/statistics/Indicators']" routerLinkActive="bg-cyan-800" class=" text-white group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md" aria-current="page">
+                    <!-- Indicators module -->
+                    <svg id="Capa_1" class=" mr-4 flex-shrink-0 h-5 w-5" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12"><defs><style>.cls-1{fill:#0FB6CC;}</style></defs><path class="cls-1" d="M9,1c0-.42.19-.61.61-.61h1.83c.41,0,.61.19.61.6V11c0,.4-.2.59-.61.6H9.61A.53.53,0,0,1,9,11V1Zm2,9.53V1.46h-1v9.1Z"/><path class="cls-1" d="M4.45,3.08c0-.44.2-.63.63-.63h1.8c.44,0,.63.2.63.63V11c0,.44-.19.63-.63.64H5.08c-.43,0-.63-.2-.63-.64V3.08Zm1,.4v7.08h1V3.48Z"/><path class="cls-1" d="M3,11a.55.55,0,0,1-.61.62H.55A.55.55,0,0,1-.06,11V5.08a.53.53,0,0,1,.6-.6H2.4a.53.53,0,0,1,.6.6V11ZM1,5.51v5.05H2V5.51Z"/></svg>                    <span class="text-white">Indicadores</span>
+                </a>
+                <div class="space-y-1">
+                    <!-- Current: "bg-gray-100 text-gray-900", Default: "bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-900" -->
+                    <a (click)="showAlliesMenu()" class="text-cyan-100 hover:text-white hover:bg-cyan-600 group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md">
+                        <!-- Allies module -->
+                        <svg id="Capa_1" class="h-5 w-5 mr-4 flex-shrink-0 " data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12"><defs><style>.cls-1,.cls-2{fill:#0FB6CC;}</style></defs><path class="cls-1" d="M.33,8.92a3.45,3.45,0,0,1,1.94-3,3.47,3.47,0,0,1,4.26.85A3.47,3.47,0,0,1,7.39,9c0,.17-.09.28-.23.28s-.22-.1-.23-.28A3,3,0,0,0,5.4,6.41a3.1,3.1,0,0,0-3.58.35,3.17,3.17,0,0,0-1,2A2.09,2.09,0,0,0,.79,9c0,.18-.1.29-.25.28S.32,9.19.33,9Z"/><path class="cls-1" d="M5.73,2.79A1.87,1.87,0,0,1,3.85,4.67a1.88,1.88,0,1,1,0-3.76A1.88,1.88,0,0,1,5.73,2.79ZM3.85,1.37A1.43,1.43,0,0,0,2.43,2.79,1.45,1.45,0,0,0,3.86,4.22,1.45,1.45,0,0,0,5.28,2.79,1.44,1.44,0,0,0,3.85,1.37Z"/><path class="cls-1" d="M8.82.91A1.88,1.88,0,1,1,6.93,2.78,1.88,1.88,0,0,1,8.82.91Zm1.41,1.88a1.42,1.42,0,0,0-2.84,0,1.42,1.42,0,1,0,2.84,0Z"/><path class="cls-1" d="M8.76,5.53a3.49,3.49,0,0,1,2.67,1.18l.1.11c.14.16.15.3.05.4s-.25.07-.39-.1a3.14,3.14,0,0,0-.66-.6,3.1,3.1,0,0,0-2-.51,3,3,0,0,0-1.38.48.27.27,0,0,1-.27,0c-.18-.08-.18-.29,0-.41A3.55,3.55,0,0,1,8,5.64,5,5,0,0,1,8.76,5.53Z"/><path class="cls-2" d="M10.48,9.59h1.07a.29.29,0,0,1,.3.29.3.3,0,0,1-.3.31H10.48v1.05a.29.29,0,0,1-.3.32.3.3,0,0,1-.3-.32V10.19h-1a.3.3,0,1,1,0-.6H9.88v-1a.3.3,0,1,1,.6,0Z"/></svg>                        <span class="text-white">Aliados</span>
+                    </a>
+                    <!-- Allies dropdown module -->
+                    <div class="space-y-1" id="sub-menu-1" *ngIf="allies === true">
+                        <a [routerLink]="['/Dashboard/allies/NewAllie']" routerLinkActive="bg-cyan-800" class="group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium text-white rounded-md  hover:bg-cyan-600 "> Nuevo aliado  </a>
+                        <a [routerLink]="['/Dashboard/allies/AlliesList']" routerLinkActive="bg-cyan-800" class="group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium text-white rounded-md  hover:bg-cyan-600 "> Aliados </a>
+                    </div>
+                </div>
+                <a [routerLink]="['/Dashboard/affiliates/listAffiliates']" routerLinkActive="bg-cyan-800" class="text-cyan-100 hover:text-white hover:bg-cyan-600 group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md ">
+                    <!-- Affiliates  module-->
+                    <svg id="Capa_1 " class="h-5 w-5 mr-4 flex-shrink-0 " data-name="Capa 1 " xmlns="http://www.w3.org/2000/svg " viewBox="0 0 12 12 "><defs><style>.cls-1{fill:#0FB6CC;}</style></defs><path class="cls-1 " d="M10.07,10l1.1,1.1a.37.37,0,1,1-.5.54l-1-1-.07-.09a1.9,1.9,0,0,1-1.68.25A1.85,1.85,0,0,1,6.82,10a1.92,1.92,0,0,1,.34-2.47A1.94,1.94,0,0,1,10.07,10Zm-.4-1.09a1.2,1.2,0,0,0-1.2-1.2A1.18,1.18,0,0,0,7.26,8.92a1.21,1.21,0,0,0,1.2,1.22A1.22,1.22,0,0,0,9.67,8.93Z
+                        "/><path class="cls-1 " d="M4.15,5.9A3.28,3.28,0,0,1,3.1,4.79,3.2,3.2,0,1,1,6.43,6.36a8.86,8.86,0,0,1-.9.07,4.22,4.22,0,0,0-2.46,1,4.3,4.3,0,0,0-1.52,2.67,3.35,3.35,0,0,0-.05.63.4.4,0,0,0,.43.45H5.84a.4.4,0,1,1,0,.79H1.9a1.18,1.18,0,0,1-1.2-1.2A5.15,5.15,0,0,1,4,6Zm1.72-.29a2.39,2.39,0,1,0,0-4.78A2.41,2.41,0,0,0,3.48,3.24,2.41,2.41,0,0,0,5.87,5.61Z
+                        "/></svg> <span class="text-white ">Busqueda de afiliados</span>
+                </a>
+                <div class="space-y-1">
+                    <!-- Current: "bg-gray-100 text-gray-900", Default: "bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-900" -->
+                    <a (click)="showAdvisersMenu()" class="text-cyan-100 hover:text-white hover:bg-cyan-600 group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md ">
+                        <!-- Advisers module -->
+                        <svg id="Capa_1 " class="h-5 w-5 mr-4 flex-shrink-0 " data-name="Capa 1 " xmlns="http://www.w3.org/2000/svg " viewBox="0 0 12 12 "><defs><style>.cls-1{fill:#0FB6CC;}</style></defs><path class="cls-1 " d="M4.06,5.91A3.24,3.24,0,0,1,3,4.79,3.2,3.2,0,1,1,6.34,6.37c-.3,0-.6,0-.9.07A4.22,4.22,0,0,0,3,7.45a4.3,4.3,0,0,0-1.52,2.68c0,.2,0,.42-.05.63a.4.4,0,0,0,.43.44H5.75a.4.4,0,0,1,.43.4.39.39,0,0,1-.44.4H1.8A1.18,1.18,0,0,1,.6,10.79,5.17,5.17,0,0,1,3.94,6Zm1.72-.29A2.4,2.4,0,1,0,3.39,3.25,2.39,2.39,0,0,0,5.78,5.62Z
+                            "/><path class="cls-1 " d="M9.17,8.61h1.4a.4.4,0,0,1,0,.8H9.17v1.37a.4.4,0,1,1-.8,0V9.41H7A.4.4,0,0,1,6.58,9,.39.39,0,0,1,7,8.61H8.37V7.24a.39.39,0,0,1,.41-.42.39.39,0,0,1,.39.42Z "/></svg>
+                        <span class="text-white ">Asesores</span>
+                    </a>
+                    <!-- Dropdown advisers module -->
+                    <div class="space-y-1" id="sub-menu-1" *ngIf="advisers === true">
+                        <a [routerLink]="['/Dashboard/advisers/NewAdviser']" routerLinkActive="bg-cyan-800" class="group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium text-white rounded-md  hover:bg-cyan-600 "> Nuevo asesor  </a>
+                        <a [routerLink]="['/Dashboard/advisers/listAdviser']" routerLinkActive="bg-cyan-800" class="group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium text-white rounded-md  hover:bg-cyan-600 "> Asesores </a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-6 pt-6 ">
+                <div class="px-2 space-y-1 ">
+                    <a (click)="showConfigMenu()" class="cursor-pointer group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md text-cyan-100 hover:text-white hover:bg-cyan-600 ">
+                        <!-- Config Module -->
+                        <svg class="h-5 w-5 mr-4 flex-shrink-0 " id="Capa_1 " data-name="Capa 1 " xmlns="http://www.w3.org/2000/svg " viewBox="0 0 12 12 "><defs><style>.cls-1{fill:#0FB6CC;}</style></defs><path class="cls-1 " d="M.14,5.25A.46.46,0,0,1,.51,5L1.63,4.7a.16.16,0,0,0,.13-.11A4.71,4.71,0,0,1,2,4.07a.17.17,0,0,0,0-.18c-.21-.33-.41-.67-.61-1a.37.37,0,0,1,.07-.55l.86-.86a.38.38,0,0,1,.55-.07l1,.62A.17.17,0,0,0,4,2a5.49,5.49,0,0,1,.51-.21.2.2,0,0,0,.13-.15c.09-.4.19-.81.29-1.21A.36.36,0,0,1,5.35.15H6.61A.35.35,0,0,1,7,.46l.3,1.21a.17.17,0,0,0,.12.15l.5.2a.17.17,0,0,0,.19,0l1-.61a.38.38,0,0,1,.55.07l.87.87a.37.37,0,0,1,.06.53c-.2.34-.4.68-.61,1a.17.17,0,0,0,0,.18,5.49,5.49,0,0,1,.21.51.17.17,0,0,0,.15.12l1.22.3a.34.34,0,0,1,.3.39V6.67a.34.34,0,0,1-.3.39l-1.22.3a.18.18,0,0,0-.15.13A5.49,5.49,0,0,1,10,8a.15.15,0,0,0,0,.16c.21.34.41.68.61,1a.37.37,0,0,1-.06.55l-.87.87a.36.36,0,0,1-.53.06l-1-.61a.15.15,0,0,0-.17,0l-.5.2a.19.19,0,0,0-.14.16L7,11.52a.49.49,0,0,1-.27.35H5.2a.44.44,0,0,1-.27-.35c-.09-.38-.19-.76-.28-1.13a.16.16,0,0,0-.13-.14c-.16-.07-.33-.13-.49-.21a.2.2,0,0,0-.2,0l-1,.61a.36.36,0,0,1-.53-.06l-.86-.87a.37.37,0,0,1-.07-.55c.2-.33.4-.67.61-1A.2.2,0,0,0,2,8a5.49,5.49,0,0,1-.21-.51.18.18,0,0,0-.13-.11L.52,7.09a.48.48,0,0,1-.38-.28Zm11,.37-.07,0L10,5.32A.44.44,0,0,1,9.6,5a8.33,8.33,0,0,0-.34-.82.43.43,0,0,1,0-.44c.18-.3.36-.61.55-.91s.08-.15,0-.27l-.46-.47-1.07.64a.41.41,0,0,1-.44,0c-.27-.12-.54-.23-.82-.33a.43.43,0,0,1-.31-.33l-.12-.5L6.39.84H5.57l0,.06c-.09.38-.19.76-.27,1.15a.45.45,0,0,1-.34.36,7.35,7.35,0,0,0-.77.32.46.46,0,0,1-.49,0l-1-.58s-.09,0-.11,0L2,2.68l.07.11.57,1a.39.39,0,0,1,0,.39c-.13.3-.25.61-.37.91a.39.39,0,0,1-.28.25l-.43.11-.81.21c0,.25,0,.49,0,.74,0,.07,0,.09.09.11L2,6.74a.45.45,0,0,1,.34.3,8.93,8.93,0,0,0,.35.85.42.42,0,0,1,0,.42l-.53.88L2,9.38l.51.51c.06.07.11.06.18,0l1-.58a.43.43,0,0,1,.45,0c.26.12.53.23.8.33a.45.45,0,0,1,.33.35c.08.37.18.73.27,1.1a.09.09,0,0,0,.1.09h.67c.07,0,.09,0,.11-.09.08-.37.18-.73.27-1.1A.45.45,0,0,1,7,9.65c.26-.09.52-.2.78-.32a.46.46,0,0,1,.49,0c.31.2.64.39,1,.58a.11.11,0,0,0,.11,0c.19-.17.37-.36.55-.54l-.06-.1c-.19-.32-.38-.65-.57-1a.45.45,0,0,1,0-.45,7.43,7.43,0,0,0,.34-.82.45.45,0,0,1,.33-.31l.5-.11.74-.19Z
+                        "/><path class="cls-1 " d="M8.38,6A2.41,2.41,0,1,1,6,3.63,2.41,2.41,0,0,1,8.38,6ZM6,7.75A1.72,1.72,0,1,0,4.26,6,1.72,1.72,0,0,0,6,7.75Z "/></svg>
+                        <span class="text-white ">Configuraciones</span>
+                    </a>
+                    <!-- Dropdown config module -->
+                    <div class="space-y-1" id="sub-menu-1" *ngIf="config === true">
+                        <a [routerLink]="['/Dashboard/config/Plans']" routerLinkActive="bg-cyan-800" class="flex items-center w-full py-2 pl-10 pr-2 text-sm font-medium text-white rounded-md group hover:bg-cyan-600 "> Planes  </a>
+                        <a [routerLink]="['/Dashboard/config/Services']" routerLinkActive="bg-cyan-800" class="flex items-center w-full py-2 pl-10 pr-2 text-sm font-medium text-white rounded-md group hover:bg-cyan-600 "> Servicios </a>
+                        <a [routerLink]="['/Dashboard/config/Specialties']" routerLinkActive="bg-cyan-800" class="flex items-center w-full py-2 pl-10 pr-2 text-sm font-medium text-white rounded-md group hover:bg-cyan-600 "> Especialidades </a>
+                        <a [routerLink]="['/Dashboard/config/Medicine']" routerLinkActive="bg-cyan-800" class="flex items-center w-full py-2 pl-10 pr-2 text-sm font-medium text-white rounded-md group hover:bg-cyan-600 "> Medicamentos </a>
+                        <a [routerLink]="['/Dashboard/config/MedicalService']" routerLinkActive="bg-cyan-800" class="flex items-center w-full py-2 pl-10 pr-2 text-sm font-medium text-white rounded-md group hover:bg-cyan-600 "> Servicios médicos </a>
+                        <a [routerLink]="['/Dashboard/config/Products']" routerLinkActive="bg-cyan-800" class="flex items-center w-full py-2 pl-10 pr-2 text-sm font-medium text-white rounded-md group hover:bg-cyan-600 "> Productos </a>
+                      </div>
+                </div>
+            </div>
+
+        </nav>
+    </div>
+
+    <div class="flex-shrink-0 w-14" aria-hidden="true" *ngIf="sidebar === true">
+        <!-- Dummy element to force sidebar to shrink to fit close icon -->
+    </div>
+</div>
+
+
+
+
+<!-- Header  -->
+<div class="relative z-10 flex-shrink-0 flex h-16 bg-white border-b border-gray-200 lg:border-none">
+    <button type="button" (click)="showSideBarMenu()" class="px-4 border-r  border-gray-200 text-gray-400 focus:outline-none cursor-pointer focus:ring-2 focus:ring-inset focus:ring-cyan-500 lg:hidden" style="z-index: 9999999999;">
+    <svg class="h-6 w-6 cursor-pointer" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="false">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+    </svg>
+    </button>
+    <!-- Search bar -->
+    <div class="flex-1 px-4 flex justify-end sm:px-6 lg:max-w-6xl lg:mx-auto lg:px-8">
+        <div class="flex-1 flex">
+
+        </div>
+        <div class="ml-4 flex items-center md:ml-6 ">
+          <div class="relative">
+            <button type="button" (click)="showNotifFunctions()" class="max-w-xs bg-white rounded-full flex items-center text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 ">
+                <!-- Heroicon name: outline/bell -->
+                <svg class="h-6 w-6 " xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                </svg>
+                <span class="flex h-3 w-3" *ngIf="resultFilesChargedLegalStaff > 0 || resultsNaturalDoctorFilesSent > 0">
+                  <span class="relative inline-flex animate-ping rounded-full h-2 w-2 duration-300 bg-sky-500"></span>
+                </span>
+            </button>
+            <div *ngIf="showNotif === true &&  resultsNaturalDoctorFilesSent > 0 || showNotif === true &&  resultFilesChargedLegalStaff > 0 " class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button"
+                tabindex="-1">
+                <!-- Active: "bg-gray-100", Not Active: "" -->
+                <a  *ngIf="resultsNaturalDoctorFilesSent > 0" [routerLink]="['/Dashboard/allies/AlliesList']"    class="cursor-pointer block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Tienes {{resultsNaturalDoctorFilesSent}} Aliados Naturales por Aprobar</a>
+                <a  *ngIf="resultFilesChargedLegalStaff > 0"  [routerLink]="['/Dashboard/allies/AlliesList']"  class="cursor-pointer block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Tienes {{resultFilesChargedLegalStaff}} Aliados Jurídicos por Aprobar</a>
+            </div>
+          </div>
+
+            <!-- Profile dropdown -->
+            <div class="ml-3 relative">
+                <button type="button" (click)="showAdminFunctions()" class="max-w-xs bg-white rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-200 lg:p-2 lg:rounded-md lg:hover:bg-gray-50" id="user-menu-button"
+                    aria-expanded="false" aria-haspopup="true">
+                    <img class="h-8 w-8 rounded-full" src="assets/images/Perfil2.jpg" alt="">
+                    <span class="hidden ml-3 text-gray-700 text-sm font-medium lg:block"><span class="sr-only">Open user menu for </span>Administrador</span>
+                    <!-- Heroicon name: solid/chevron-down -->
+                    <svg class="hidden flex-shrink-0 ml-1 h-5 w-5 text-gray-400 lg:block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                </button>
+                <div *ngIf="adminFunctions === true " class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button"
+                    tabindex="-1">
+                    <!-- Active: "bg-gray-100", Not Active: "" -->
+                    <a (click)="ShowChangePasswordModal()" class="cursor-pointer block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Cambiar Contraseña</a>
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Cerrar Sesion</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Change password modal-->
+<div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true" *ngIf="changePassword === true">
+
+    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+
+    <div class="fixed z-10 inset-0 overflow-y-auto">
+        <div class="flex items-end sm:items-center justify-center min-h-full p-4 text-center sm:p-0">
+            <div class="relative bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-sm sm:w-full sm:p-6">
+                <div>
+                    <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-purple-100">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
+                        </svg>
+                    </div>
+                    <div class="mt-3 text-center sm:mt-5">
+                        <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">Cambia tu Contraseña</h3>
+                        <p class="mt-2 text-sm text-gray-500">Mínimo 8 caracteres, no debe coincidir en ningun momento al correo y ni usuario, debe ser alfanumérico</p>
+                        <div class="mt-3">
+                            <div class="mb-2">
+                                <label for="password" class="block text-sm font-medium text-left text-gray-600">Nueva Contraseña</label>
+                                <div class="mt-1 relative rounded-md shadow-sm">
+                                    <input type="password" name="password" id="password" [(ngModel)]="password" [ngClass]="{'border-red-300 text-red-900 placeholder-red-300 focus:ring-red-500 focus:border-red-500' : !samePassword }" class="block w-full pr-10  focus:outline-none  sm:text-sm rounded-md"
+                                        aria-invalid="true" aria-describedby="password-error">
+                                    <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                                        <!-- Heroicon name: solid/exclamation-circle -->
+                                        <svg class="h-5 w-5 text-red-500" *ngIf="!samePassword" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                          <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="repeat_password" class="block text-sm font-medium text-left text-gray-600">Repite la Contraseña</label>
+                                <div class="mt-1 relative rounded-md shadow-sm">
+                                    <input type="password" name="repeat_password" id="repeat_password" [(ngModel)]="password2" (keyup)="VerifySamePasswords()" [ngClass]="{'border-red-300 text-red-900 placeholder-red-300 focus:ring-red-500 focus:border-red-500' : !samePassword}"
+                                        class="block w-full pr-10  focus:outline-none  sm:text-sm rounded-md" aria-invalid="true" aria-describedby="password-error">
+                                    <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                                        <!-- Heroicon name: solid/exclamation-circle -->
+                                        <svg class="h-5 w-5 text-red-500" *ngIf="!samePassword" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+                                      </svg>
+                                    </div>
+                                </div>
+                                <p class="mt-2 text-sm text-red-600 text-left" *ngIf="!samePassword" id="repeat_password">Las Contraseñas Deben Coincidir.</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-5 sm:mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <button type="button" (click)="ShowChangePasswordModal()" class="disabled:opacity-60 inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-gray-400 text-base font-medium text-white hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-600 sm:text-sm">Cancelar</button>
+                    <button type="button" (click)="ChangePassword()" [disabled]="!samePassword" class="disabled:opacity-60 inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-purple-700 text-base font-medium text-white hover:bg-purple-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-600 sm:text-sm">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

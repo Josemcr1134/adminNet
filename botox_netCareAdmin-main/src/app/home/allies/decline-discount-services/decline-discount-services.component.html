@@ -1,0 +1,45 @@
+<div class="mt-8">
+    <div class="max-w-6xl mx-auto  sm:px-6 ">
+        <div class="bg-white">
+
+            <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+
+                <form class="space-y-8 divide-y divide-gray-200">
+                    <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
+                        <div>
+                            <div>
+                                <div class="inline-flex" style="color: #6F6F6F;">
+                                  <svg xmlns="http://www.w3.org/2000/svg" [routerLink]="['/Dashboard/allies/AlliesList']" class="h-6 w-6 mx-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="cursor: pointer;">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12" />
+                                  </svg>
+                                  <h2 class="text-xl  leading-6 mb-4 font-semibold" style="color: #6F6F6F;">Aliados - Descuentos</h2>
+                                </div>
+                                <p class="mt-1 max-w-2xl text-sm text-gray-500">Rechaza este solicitud </p>
+                            </div>
+
+                            <div class="mt-6 sm:mt-5 space-y-6 sm:space-y-5">
+                                <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                    <label for="about" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> Razón </label>
+                                    <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                        <p class="mb-2 text-sm text-gray-500">Este mensaje se mostrará en la vista del aliado.</p>
+
+                                        <textarea id="about" name="about" rows="3" class="max-w-lg shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md"></textarea>
+                                        <p class="mt-2 text-sm text-gray-500">Describe brevemente el motivo de esta decisión.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-5">
+                        <div class="flex justify-end">
+                            <button type="button" [routerLink]="['/Dashboard/allies/AlliesAprove&PendingServices', 4]" routerLinkActive="router-link-active" class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Cancelar</button>
+                            <button type="submit" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"><span >Rechazar</span> </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

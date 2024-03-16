@@ -1,0 +1,254 @@
+<div class="mt-8">
+    <div class="max-w-6xl mx-auto  sm:px-6 ">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Content goes here -->
+            <div class="inline-flex" style="color: #6F6F6F;">
+                <h2 class="text-xl  mb-4 font-semibold">Afiliados</h2>
+            </div>
+            <div class="flex w-full">
+
+                <div class="block p-6 rounded-lg shadow-lg w-full bg-white ">
+
+                    <ul class="nav nav-tabs nav-justified flex flex-col md:flex-row flex-wrap list-none border-b-0 pl-0 mb-4" id="tabs-tabJustify" role="tablist">
+                        <li class="nav-item flex-grow text-center" role="presentation">
+                            <a href="#tabs-affiliates" class="tab-item  active" id="tabs-home-tabJustify" data-bs-toggle="pill" data-bs-target="#tabs-affiliates" role="tab" aria-controls="tabs-affiliates" aria-selected="true">Afiliados</a>
+                        </li>
+                        <li class="nav-item flex-grow text-center" role="presentation">
+                            <a href="#tabs-search-affiliates" class="tab-item" id="tabs-profile-tabJustify" data-bs-toggle="pill" data-bs-target="#tabs-search-affiliates" role="tab" aria-controls="tabs-search-affiliates" aria-selected="false">Filtrar afiliados</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="tabs-tabContentJustify">
+                        <div class="tab-pane fade show active" id="tabs-affiliates" role="tabpanel" aria-labelledby="tabs-home-tabJustify">
+                            <div class=" flex-1 px-2 flex flex-wrap items-center justify-between mb-4  ">
+                                <div class="btn-container mb-3 md:mb-0 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
+                                    <button type="button" class="inline-flex mb-3 md:mb-0 md:mr-2  items-center px-3 py-2 border border-transparent shadow-sm text-sm leading-4 font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                        Descargar XLS
+                                        <!-- Heroicon name: solid/mail -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                        </svg>
+                                    </button>
+                                    <button type="button" *ngFor="let p of Plans" [disabled]="p.id === plan_id" (click)="GetAffiliatesByPlan(p.id)" class="disabled:opacity-70 inline-flex mx-2 items-center px-3 py-2 border border-transparent shadow-sm text-sm leading-4 font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                        Ver {{p.name}}
+                                        <!-- Heroicon name: solid/mail -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mx-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="w-full sm:max-w-xs mt-4 justify-end ">
+                                    <label for="search" class="sr-only">Buscar...</label>
+                                    <div class="relative">
+                                        <div class="pointer-events-none absolute inset-y-0 left-0 pl-3 flex items-center">
+                                            <!-- Heroicon name: solid/search -->
+                                            <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                 <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                                            </svg>
+                                        </div>
+                                        <input (keyup)="GetAffiliatesByPlan(this.plan_id)" [(ngModel)]="searchTerm" id="search" name="search" class="block w-full bg-white border border-gray-300 rounded-md py-2 pl-10 pr-3 text-sm placeholder-gray-500 focus:outline-none focus:text-gray-900 focus:placeholder-gray-400 focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                            placeholder="Buscar...." type="search">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex px-2 flex-col">
+                                <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+
+                                        <div class="shadow overflow-x-auto border-b border-gray-200 sm:rounded-lg">
+                                            <table class="min-w-full divide-y divide-gray-200">
+                                                <thead class="bg-gray-50">
+                                                    <tr>
+                                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nombres</th>
+                                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+                                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Afiliación</th>
+                                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Estado membresía </th>
+                                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="bg-white divide-y divide-gray-200">
+                                                    <tr *ngFor="let u of Users" [routerLink]="['/Dashboard/affiliates/AffiliateMedicInfo', u.id]" class="cursor-pointer">
+                                                        <td class="px-6 py-4 whitespace-nowrap">
+                                                            <div class="flex items-center">
+                                                                <div class="">
+                                                                    <div class="text-sm font-medium text-gray-900">{{u.first_name}} {{u.last_name}} </div>
+                                                                    <div class="text-sm text-gray-500">{{u.email}}</div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap">
+                                                            <div class="text-sm text-gray-900">{{u.document}}</div>
+                                                            <div class="text-sm text-gray-500">{{u.document_type}}</div>
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap">
+                                                            <div class="text-sm text-gray-900">{{u.date_joined|date:'short'}}</div>
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-center">
+                                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800 " *ngIf="u.has_paid_affiliation"> Vigente </span>
+                                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800 " *ngIf="!u.has_paid_affiliation"> Vencida </span>
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                                            <a [routerLink]="['/Dashboard/affiliates/listAffiliate', u.id]"  data-bs-toggle="tooltip" title="Info de afiliado" class="text-indigo-600 hover:text-indigo-900">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                                                </svg>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <nav class="flex items-center justify-between px-4 py-3 bg-white border-t border-gray-200 sm:px-6" aria-label="Pagination">
+                                                <div class="hidden sm:block">
+                                                    <p class="text-sm text-gray-700">
+                                                        Mostrando
+                                                        <span class="font-medium">{{this.offset
+                                                            + 1 }}</span> a
+                                                        <span class="font-medium">{{this.limit *
+                                                            this.page}}</span> de
+                                                        <span class="font-medium">{{this.count}}</span> resultados
+                                                    </p>
+                                                </div>
+                                                <div class="flex justify-between flex-1 sm:justify-end">
+                                                    <button [disabled]="previous === null" (click)="Pagination(-1)" class="disabled:opacity-70 relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md cursor-pointer hover:bg-gray-50">
+                                                        Anterior </button>
+                                                    <button (click)="Pagination(1)" [disabled]="next === null" class="disabled:opacity-70 relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md cursor-pointer hover:bg-gray-50">
+                                                        Siguiente </button>
+                                                </div>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="tabs-search-affiliates" role="tabpanel" aria-labelledby="tabs-search-affiliates">
+                            <div class="pt-8">
+
+                                <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-8 mb-4">
+                                    <div class="sm:col-span-2">
+                                        <label for="first-name" class="block text-sm font-medium text-gray-700"> Fecha Inicial </label>
+                                        <div class="mt-1">
+                                            <input type="date" name="first-name" id="first-name" autocomplete="given-name" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+                                        </div>
+                                    </div>
+
+                                    <div class="sm:col-span-2">
+                                        <label for="last-name" class="block text-sm font-medium text-gray-700"> Fecha Final </label>
+                                        <div class="mt-1">
+                                            <input type="date" name="last-name" id="last-name" autocomplete="family-name" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+                                        </div>
+                                    </div>
+                                    <div class="sm:col-span-2">
+                                        <label for="country" class="block text-sm font-medium text-gray-700"> Tipo de plan </label>
+                                        <div class="mt-1">
+                                            <select id="country" name="country" autocomplete="country-name" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+                                                      <option>Individual</option>
+                                                      <option>Familiar</option>
+                                                      <option>Colectiva</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="sm:col-span-2">
+                                        <label for="country" class="block text-sm font-medium text-gray-700"> Estado de membresía </label>
+                                        <div class="mt-1">
+                                            <select id="country" name="country" autocomplete="country-name" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+                                                      <option>Vigente</option>
+                                                      <option>Vencida</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="sm:col-span-8">
+                                        <div class="pt-5">
+                                            <div class="flex justify-center">
+                                                <button type="submit" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Filtrar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex px-2 flex-col">
+                                    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+
+                                            <div class="shadow overflow-x-auto border-b border-gray-200 sm:rounded-lg">
+                                                <table class="min-w-full divide-y divide-gray-200">
+                                                    <thead class="bg-gray-50">
+                                                        <tr>
+                                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nombres</th>
+                                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+                                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Afiliación</th>
+                                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Estado membrecía </th>
+                                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"></th>
+
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="bg-white divide-y divide-gray-200">
+                                                        <tr [routerLink]="['/Dashboard/affiliates/AffiliateMedicInfo', 5]" class="cursor-pointer">
+                                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                                <div class="flex items-center">
+                                                                    <div class="">
+                                                                        <div class="text-sm font-medium text-gray-900">Jose Manuel Cuello Royo</div>
+                                                                        <div class="text-sm text-gray-500">ejemplo@example.com</div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                                <div class="text-sm text-gray-900">1048065569</div>
+                                                                <div class="text-sm text-gray-500">Cedula de ciudadania</div>
+                                                            </td>
+                                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                                <div class="text-sm text-gray-900">12/04/2000</div>
+                                                                <div class="text-sm text-gray-500">X-tipo</div>
+                                                            </td>
+                                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"> Activo </span>
+                                                            </td>
+                                                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                                                <a [routerLink]="['/Dashboard/affiliates/listAffiliate', 5]" data-bs-toggle="tooltip" title="Info de afiliado" class="text-indigo-600 hover:text-indigo-900">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                                                    </svg>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <nav class="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6" aria-label="Pagination">
+                                                    <div class="hidden sm:block">
+                                                        <p class="text-sm text-gray-700">
+                                                            Showing
+                                                            <span class="font-medium">1</span> to
+                                                            <span class="font-medium">10</span> of
+                                                            <span class="font-medium">20</span> results
+                                                        </p>
+                                                    </div>
+                                                    <div class="flex-1 flex justify-between sm:justify-end">
+                                                        <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"> Anterior </a>
+                                                        <a href="#" class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"> Siguiente </a>
+                                                    </div>
+                                                </nav>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- -->
+<!-- Required popper.js to TOOLTIP -->
+<script src="https://unpkg.com/@popperjs/core@2.9.1/dist/umd/popper.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+  var tooltipTriggerList = [].slice.call(
+    document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  );
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new Tooltip(tooltipTriggerEl);
+  });
+</script>

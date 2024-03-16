@@ -1,0 +1,149 @@
+<div class="mt-8">
+    <div class="max-w-6xl mx-auto sm:px-6 ">
+        <div class="container px-4 mx-auto sm:px-6 lg:px-8">
+            <div class="inline-flex" style="color: #6F6F6F;">
+              <svg xmlns="http://www.w3.org/2000/svg" routerLink="/Dashboard/config/Specialties" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+              </svg>
+              <h2 class="text-xl  mb-4 font-semibold">Configuraciones - Especialidades - {{specialtyName}}</h2>
+            </div>
+
+            <!-- Vademecum table -->
+            <div class="flex flex-col mb-4 lg:mt-4">
+                <div class="flex justify-between">
+                    <h4 class="mb-4 text-sm font-semibold ">Vademecum</h4>
+                    <a (click)="ShowNewVademecumModal()" class="flex mb-4 text-sm text-purple-600 cursor-pointer hover:text-purple-900 flex-nowrap ">
+                        <span>Cargar mas datos</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mx-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </a>
+
+                </div>
+                <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                    <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+                        <div class="overflow-hidden border-b border-gray-200 shadow sm:rounded-lg">
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Nombre comercial</th>
+                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Forma farmaceutica</th>
+                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Volumen</th>
+                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Unidad</th>
+                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Presentación</th>
+                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"></th>
+
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200">
+                                    <tr *ngFor="let v of vademecum">
+                                        <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">{{v.medicine.trade_name}}</td>
+                                        <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">{{v.medicine.dosage_form}}</td>
+                                        <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">{{v.medicine.volume}}</td>
+                                        <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">{{v.medicine.unit}} </td>
+                                        <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">{{v.medicine.appearance}}</td>
+                                        <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                            <svg (click)="DeleteVademecumAssignation(v.medicine.id)" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="cursor: pointer;">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                          </svg>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Services table -->
+            <div class="flex flex-col lg:mt-10">
+                <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                    <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+                        <div class="flex justify-between">
+                            <h4 class="mb-4 text-sm font-semibold ">Servicios</h4>
+
+                        </div>
+                        <div class="overflow-hidden border-b border-gray-200 shadow sm:rounded-lg">
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Tipo</th>
+                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Servicio</th>
+                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Precio sugerido</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200">
+                                    <tr *ngFor="let s of services">
+                                        <td class="px-6 py-4 text-sm font-medium text-gray-900 whitespace-nowrap">{{s.description}}</td>
+                                        <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">{{s.name}}</td>
+                                        <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">{{s.fee}}</td>
+                                    </tr>
+                                    <!-- More services... -->
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<div *ngIf="newVademecum === true" class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75">
+        <div class="fixed inset-0 z-10 overflow-y-auto">
+            <div class="flex items-end justify-center min-h-full p-4 text-center sm:items-center sm:p-0">
+                <div class="relative px-4 pt-5 pb-4 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl sm:my-8 sm:max-w-lg sm:w-full sm:p-6">
+                    <div>
+
+                        <div class="mt-3 sm:mt-5">
+                            <h3 class="mb-3 text-lg font-medium leading-6 text-center text-primary " id="modal-title">Agregar un nuevo medicamento a {{specialtyName}} </h3>
+                            <div>
+                                <label for="medicine" class="block text-sm font-medium text-gray-700">Medicamento</label>
+                                <select [(ngModel)]="medicine_id" id="medicine" name="medicine" class="block w-full py-2 pl-3 pr-10 mt-1 text-base border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                <option *ngFor="let m of medicines" [value]="m.id" [selected]="m[0]">{{m.trade_name}} </option>
+                              </select>
+                            </div>
+                        </div>
+                        <nav class="flex items-center justify-between border-t border-gray-200 px-4 sm:px-0 mt-3">
+                            <div class="-mt-px flex w-0 flex-1">
+                                <button type="button" (click)="PaginationMedicines(-1)" [disabled]="pageMedicine === 1" class="disabled:opacity-70 inline-flex items-center border-t-2 border-transparent pt-4 pr-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
+                                        <!-- Heroicon name: mini/arrow-long-left -->
+                                        <svg class="mr-3 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M18 10a.75.75 0 01-.75.75H4.66l2.1 1.95a.75.75 0 11-1.02 1.1l-3.5-3.25a.75.75 0 010-1.1l3.5-3.25a.75.75 0 111.02 1.1l-2.1 1.95h12.59A.75.75 0 0118 10z" clip-rule="evenodd" />
+                                    </svg> Anterior
+                                </button>
+                            </div>
+
+                            <div class="-mt-px flex w-0 flex-1 justify-end">
+                                <button type="button" (click)="PaginationMedicines(1)" [disabled]="vademecum.length === 0 || vademecum.length < 10" class="disabled:opacity-70 inline-flex items-center border-t-2 border-transparent pt-4 pl-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
+                                    Siguiente
+                                    <!-- Heroicon name: mini/arrow-long-right -->
+                                    <svg class="ml-3 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                        <path fill-rule="evenodd" d="M2 10a.75.75 0 01.75-.75h12.59l-2.1-1.95a.75.75 0 111.02-1.1l3.5 3.25a.75.75 0 010 1.1l-3.5 3.25a.75.75 0 11-1.02-1.1l2.1-1.95H2.75A.75.75 0 012 10z" clip-rule="evenodd" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </nav>
+
+
+                    </div>
+                    <div class="mt-5 sm:mt-6 sm:grid sm:grid-cols-2 sm:gap-3 sm:grid-flow-row-dense">
+                        <button type="button" (click)="AsignMedicineToSpecialtie()" [disabled]="loading === true" class="inline-flex justify-center w-full px-4 py-2 text-base font-medium text-white bg-purple-600 border border-transparent rounded-md shadow-sm hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 sm:col-start-2 sm:text-sm">
+                            <span *ngIf="loading === false">Asignar</span>
+                            <span *ngIf="loading === true">Creando y asignando....</span>
+                        </button>
+                        <button type="button" (click)="ShowNewVademecumModal()" class="inline-flex justify-center w-full px-4 py-2 mt-3 text-base font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 sm:mt-0 sm:col-start-1 sm:text-sm">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

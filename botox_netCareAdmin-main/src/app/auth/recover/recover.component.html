@@ -1,0 +1,46 @@
+<!-- Container -->
+<div class="container mx-auto">
+    <div class="flex justify-center px-6 my-12">
+        <!-- Row -->
+        <div class="flex w-full xl:w-3/4 lg:w-11/12">
+            <!-- Col -->
+            <div class="hidden w-full h-full bg-cover rounded-l-lg lg:block lg:w-1/2">
+                <img src="assets/images/img-dashboard-netcare.jpg" class="h-full rounded-l-lg " alt="">
+            </div>
+            <!-- Col -->
+            <div class="w-full p-5 bg-white rounded-lg lg:w-1/2 lg:rounded-l-none">
+                <div class="px-8 mb-4 text-center">
+                    <h3 class="pt-4 mb-2 text-2xl">¿Olvidaste tu contraseña?</h3>
+                    <p class="mb-4 text-sm text-gray-700">
+                        Tranquilo, ingresa el correo electrónico de tu cuenta y enviaremos un link para que logres recuperarla!
+                    </p>
+                </div>
+                <form class="px-8 pt-6 pb-8 mb-4 bg-white rounded">
+                    <div class="mb-4">
+                        <label class="block mb-2 text-sm font-bold text-gray-700" for="email">
+                                Correo electrónico
+                            </label>
+                        <input class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Ingresa tu correo..." />
+                    </div>
+                    <div class="mb-6 text-center">
+                        <button class="relative flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-700 border border-transparent rounded-md outline-none btn-primary hover: focus: ring-2 ring-offset-2 ring-indigo-500 focus:outline-none focus:shadow-outline"
+                            type="button">
+                               Cambiar contraseña
+                            </button>
+                    </div>
+                    <hr class="mb-6 border-t" />
+                    <div class="text-center">
+                        <a class="nav-link " href="./register.html">
+                                Crear una cuenta!
+                            </a>
+                    </div>
+                    <div class="text-center">
+                        <a class="nav-link " [routerLink]="['/auth/login']" routerLinkActive="router-link-active">
+                                ¿Tienes ya una cuenta? Inicia sesion!
+                            </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

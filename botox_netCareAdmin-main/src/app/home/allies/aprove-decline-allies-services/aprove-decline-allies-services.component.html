@@ -1,0 +1,233 @@
+<div class="mt-8" *ngIf="f_type === 'allyfee'">
+    <div class="max-w-6xl mx-auto  sm:px-6 ">
+        <div class="bg-white">
+
+            <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+
+                <form class="space-y-8 divide-y divide-gray-200">
+                    <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
+                        <div>
+                            <div>
+                                <div class="inline-flex" style="color: #6F6F6F;">
+                                  <svg xmlns="http://www.w3.org/2000/svg" [routerLink]="['/Dashboard/allies/AlliesList']" class="h-6 w-6 mx-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="cursor: pointer;">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12" />
+                                  </svg>
+                                  <h2 class="text-xl  leading-6 mb-4 font-semibold" style="color: #6F6F6F;">Aliados - Servicios</h2>
+                                </div>
+                                <p class="mt-1 max-w-2xl text-sm text-gray-500">Corrije este servicio </p>
+                            </div>
+                            <div class="mt-6 sm:mt-5 space-y-6 sm:space-y-5">
+                                <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                    <label for="service_cost" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> Valor del servicio propuesto por el aliado  </label>
+                                    <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                        <input type="number" value="5.000" disabled name="service_cost" id="service_cost" class="max-w-lg block w-full shadow-sm disabled:bg-gray-200 focus:ring-purple-500 focus:border-purple-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                                    </div>
+                                </div>
+                                <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                    <label for="netcare_fee" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> Tarifa impuesta por netcare </label>
+                                    <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                        <input id="netcare_fee" name="netcare_fee" type="number" autocomplete="netcare_fee" class="block max-w-lg w-full shadow-sm focus:ring-purple-500 focus:border-purple-500 sm:text-sm border-gray-300 rounded-md">
+                                    </div>
+                                </div>
+                                <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                    <label for="about" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> Razón </label>
+                                    <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                        <p class="mb-2 text-sm text-gray-500">Este mensaje se mostrará en la vista del aliado.</p>
+
+                                        <textarea id="about" name="about" rows="3" class="max-w-lg shadow-sm block w-full focus:ring-purple-500 focus:border-purple-500 sm:text-sm border border-gray-300 rounded-md"></textarea>
+                                        <p class="mt-2 text-sm text-gray-500">Describe brevemente el motivo de esta decisión.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pt-5">
+                        <div class="flex justify-end">
+                            <button type="button" [routerLink]="['/Dashboard/allies/AlliesAprove&PendingServices', this.ID]" routerLinkActive="router-link-active" class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">Cancelar</button>
+                            <button type="submit" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"><span  >Aprobar</span></button>
+                            <button type="submit" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"><span >Rechazar</span> </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="mt-8" *ngIf="f_type === 'correct'">
+    <div class="max-w-6xl mx-auto  sm:px-6 ">
+        <div class="bg-white ">
+            <div class=" grid lg:grid-cols-2 grid-cols-1">
+                <div class="w-full mx-auto py-12 px-4 sm:px-6 lg:px-8">
+                    <div class="space-y-8 divide-y divide-gray-200">
+                        <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
+                            <div>
+                                <div>
+                                    <h2 class="text-xl  leading-6 mb-4 font-semibold" style="color: #6F6F6F;">Aliados - Servicios</h2>
+                                    <p class="mt-1 max-w-2xl text-sm text-gray-500">Revisa este servicio, puedes aprobarlo, rechazarlo o enviar una corrección </p>
+                                </div>
+                                <div class="mt-6 sm:mt-5 space-y-6 sm:space-y-5">
+                                    <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                        <label for="service_name" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> Nombre</label>
+                                        <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                            <input type="text" [(ngModel)]="service_name" name="service_name" id="service_name" class=" block w-full shadow-sm disabled:bg-gray-200 focus:ring-purple-500 focus:border-purple-500 sm:text-sm border-gray-300 rounded-md">
+                                        </div>
+                                    </div>
+                                    <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                        <label for="service_desc" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> Descripción </label>
+                                        <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                            <input id="service_desc" name="service_desc" type="text" [(ngModel)]="service_desc" autocomplete="service_desc" class="block  w-full shadow-sm focus:ring-purple-500 focus:border-purple-500 sm:text-sm border-gray-300 rounded-md">
+                                        </div>
+                                    </div>
+                                    <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                        <label for="specialty" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> Especialidad </label>
+                                        <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                            <select [(ngModel)]="specialt_selected" id="specialty" name="specialty" class="max-w-lg mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                                                <option *ngFor="let l of Licences"  [selected]="l.specialty.id === service_specialty" [value]="l.specialty.id" >{{l.specialty.name}} </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                        <label for="service_fee" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> Tarifa </label>
+                                        <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                            <input id="service_fee" name="service_fee" type="text" [(ngModel)]="service_fee" autocomplete="service_fee" class="block  w-full shadow-sm focus:ring-purple-500 focus:border-purple-500 sm:text-sm border-gray-300 rounded-md">
+                                        </div>
+                                    </div>
+                                    <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                        <label for="service_external_fee" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> Tarifa particular </label>
+                                        <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                            <input id="service_external_fee" name="service_external_fee" type="text" [(ngModel)]="external_netcare_fee" autocomplete="service_external_fee" class="block  w-full shadow-sm focus:ring-purple-500 focus:border-purple-500 sm:text-sm border-gray-300 rounded-md">
+                                        </div>
+                                    </div>
+                                    <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                        <label for="netcare_fee" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> Tarifa de netcare* </label>
+                                        <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                            <input id="netcare_fee" name="netcare_fee" type="text" [(ngModel)]="netcare_fee" autocomplete="netcare_fee" class="block  w-full shadow-sm focus:ring-purple-500 focus:border-purple-500 sm:text-sm border-gray-300 rounded-md">
+                                        </div>
+                                    </div>
+                                    <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                        <label for="service_fee" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> Imagen </label>
+                                        <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                            <img [src]="image" class="w-12 h-12 rounded-md" alt="Sin imagen">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full mx-auto py-12 px-4 sm:px-6 lg:px-8" *ngIf="prev_data !== null">
+                    <div class="space-y-8 divide-y divide-gray-200">
+                        <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
+                            <div>
+                                <div>
+                                    <h2 class="text-xl  leading-6 mb-4 font-semibold" style="color: #6F6F6F;">Correcciones</h2>
+                                    <p class="mt-1 max-w-2xl text-sm text-gray-500">Visualiza las correcciones a este servicio realizadas por el aliado </p>
+                                </div>
+                                <div class="max-h-96 overflow-y-auto">
+                                    <div class="mt-6 sm:mt-5 space-y-6 sm:space-y-5" *ngFor="let p of prev_data">
+                                        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5" *ngIf="p.fields.name">
+                                            <label for="service_name" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> Nombre</label>
+                                            <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                                <input disabled type="text" [value]="p.fields.name" name="service_name" id="service_name" class=" block w-full shadow-sm disabled:bg-gray-100 focus:ring-purple-500 focus:border-purple-500 sm:text-sm border-gray-300 rounded-md">
+                                            </div>
+                                        </div>
+                                        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5" *ngIf="p.fields.description">
+                                            <label for="service_desc" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> Descripción </label>
+                                            <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                                <input disabled id="service_desc" [value]="p.fields.description" name="service_desc" type="text" autocomplete="service_desc" class="block disabled:bg-gray-100  w-full shadow-sm focus:ring-purple-500 focus:border-purple-500 sm:text-sm border-gray-300 rounded-md">
+                                            </div>
+                                        </div>
+                                        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5" *ngIf="p.fields.specialty">
+                                            <label for="specialty" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> Especialidad </label>
+                                            <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                                <select disabled id="specialty" name="specialty" class="max-w-lg mt-1 block w-full rounded-md disabled:bg-gray-100 border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                                                    <option *ngFor="let l of Licences"  [selected]="p.fields.specialty === l.specialty.id" [value]="p.fields.specialty" >{{l.specialty.name}} </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5" *ngIf="p.fields.fee">
+                                            <label for="service_fee" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> Tarifa </label>
+                                            <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                                <input disabled id="service_fee" [value]="p.fields.fee" name="service_fee" type="number" [(ngModel)]="service_fee" autocomplete="service_fee" class="block disabled:bg-gray-100  w-full shadow-sm focus:ring-purple-500 focus:border-purple-500 sm:text-sm border-gray-300 rounded-md">
+                                            </div>
+                                        </div>
+                                        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5" *ngIf="p.fields.external_fee">
+                                            <label for="service_external_fee" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> Tarifa particular </label>
+                                            <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                                <input disabled id="service_external_fee" name="service_external_fee" type="number" [value]="p.fields.external_fee" autocomplete="service_external_fee" class="block disabled:bg-gray-100  w-full shadow-sm focus:ring-purple-500 focus:border-purple-500 sm:text-sm border-gray-300 rounded-md">
+                                            </div>
+                                        </div>
+                                        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5" *ngIf="p.fields.netcare_fee">
+                                            <label for="netcare_fee" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> Tarifa de netcare* </label>
+                                            <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                                <input disabled id="netcare_fee" name="netcare_fee" type="number" [value]="p.fiels.netcare_fee" autocomplete="netcare_fee" class="block disabled:bg-gray-100  w-full shadow-sm focus:ring-purple-500 focus:border-purple-500 sm:text-sm border-gray-300 rounded-md">
+                                            </div>
+                                        </div>
+                                        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5" *ngIf="p.fields.image">
+                                            <label for="service_fee" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> Imagen </label>
+                                            <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                                <img [src]="p.fields.image" class="w-12 h-12 rounded-md" alt="Sin imagen">
+                                            </div>
+                                        </div>
+                                        <hr class="border-1 border-purple-700">
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div [ngClass]="{'lg:col-span-2': prev_data !== null}" class="flow-root w-full mx-auto py-12 px-4 sm:px-6 lg:px-8">
+                    <div>
+                        <h2 class="text-xl  leading-6 mb-4 font-semibold" style="color: #6F6F6F;">Historial</h2>
+                        <p class="mt-1 max-w-2xl text-sm text-gray-500">Estos son los comentarios generados en correcciones para este servicio </p>
+                    </div>
+                    <ul role="list" class="mb-4  mt-5 max-h-80 overflow-y-scroll">
+                        <li *ngFor="let c of service_comments">
+                            <div class="relative pb-8">
+                                <span class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true"></span>
+                                <div class="relative flex space-x-3">
+                                    <div>
+                                        <span class="h-8 w-8 rounded-full bg-gray-400 flex items-center justify-center ring-8 ring-white">
+                                            <!-- Heroicon name: mini/user -->
+                                            <svg class="h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                            <path d="M10 8a3 3 0 100-6 3 3 0 000 6zM3.465 14.493a1.23 1.23 0 00.41 1.412A9.957 9.957 0 0010 18c2.31 0 4.438-.784 6.131-2.1.43-.333.604-.903.408-1.41a7.002 7.002 0 00-13.074.003z" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5">
+                                        <div>
+                                            <p class="text-sm text-gray-500">{{c.message}}
+                                                <a href="#" class="font-medium text-gray-900" *ngIf="c.from_admin === false"> Aliado</a>
+                                                <a href="#" class="font-medium text-gray-900" *ngIf="c.from_admin === true"> Administrador</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="relative pb-8 mt-2 ">
+                        <div>
+                            <label for="comment" class="block text-sm font-medium text-gray-700">Nuevo comentario*</label>
+                            <div class="mt-1">
+                                <textarea rows="2" name="comment" [(ngModel)]="new_comment" id="comment" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-5 p-4">
+                <div class="flex justify-end">
+                    <button type="button" [routerLink]="['/Dashboard/allies/AlliesAprove&PendingServices', allie_id]" routerLinkActive="router-link-active" class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">Cancelar</button>
+                    <button type="button" (click)="DeclineService()" [disabled]="this.new_comment.length === 0 || netcare_fee === 0" class="ml-3 disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"><span >Rechazar</span> </button>
+                    <button type="button" (click)="CorrectService()" [disabled]="this.new_comment.length === 0  || netcare_fee === 0" class="ml-3 disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"><span >Enviar correcciones</span> </button>
+                    <button type="button" (click)="AproveService()" [disabled]="this.new_comment.length === 0  || netcare_fee === 0" class="ml-3 disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"><span  >Aprobar</span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

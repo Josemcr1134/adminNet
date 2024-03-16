@@ -1,0 +1,8 @@
+.text-secondary:hover {
+    
+    text-decoration: underline;
+}
+.axes {
+    height: 12.5rem;
+    color: #bc71c9;
+}

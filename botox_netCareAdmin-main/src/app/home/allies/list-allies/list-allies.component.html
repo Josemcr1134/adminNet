@@ -1,0 +1,1091 @@
+<!-- NATURAL ALLIES -->
+
+<div class="mt-8">
+    <div class="max-w-6xl mx-auto sm:px-6 ">
+        <div class="container px-4 mx-auto sm:px-6 lg:px-8">
+            <div class="inline-flex" style="color: #6F6F6F;">
+                <h2 class="mb-4 text-xl font-semibold">Aliados - Naturales</h2>
+            </div>
+            <div class="flex w-full">
+                <div class="block w-full p-6 bg-white rounded-lg shadow-lg ">
+                    <ul class="flex flex-col flex-wrap pl-0 mb-4 list-none border-b-0 nav nav-tabs nav-justified md:flex-row" id="tabs-tabJustify" role="tablist">
+                        <li (click)="searchTerm = ''" class="flex-grow text-center nav-item" role="presentation">
+                            <a href="#tabs-pre-register" class="tab-item active" id="tabs-profile-tabJustify" data-bs-toggle="pill" data-bs-target="#tabs-pre-register" role="tab" aria-controls="tabs-pre-register" aria-selected="false">Registrados</a>
+                        </li>
+                        <li  (click)="searchTerm = ''" class="flex-grow text-center nav-item" role="presentation">
+                            <a href="#tabs-charged-docs" class="tab-item" id="tabs-profile-tabJustify" data-bs-toggle="pill" data-bs-target="#tabs-charged-docs" role="tab" aria-controls="tabs-charged-docs" aria-selected="false">Documentos cargados</a>
+                        </li>
+                        <li  (click)="searchTerm = ''" class="flex-grow text-center nav-item" role="presentation">
+                            <a href="#tabs-enabled" class=" tab-item" data-bs-toggle="pill" data-bs-target="#tabs-enabled" role="tab" aria-controls="tabs-enabled" aria-selected="false">Habilitados</a>
+                        </li>
+                        <li  (click)="searchTerm = ''" class="flex-grow text-center nav-item" role="presentation">
+                            <a href="#tabs-disabled" class="tab-item" id="tabs-profile-tabJustify" data-bs-toggle="pill" data-bs-target="#tabs-disabled" role="tab" aria-selected="false">Inhabilitados</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="tabs-tabContentJustify">
+                        <div class="tab-pane fade show active" id="tabs-pre-register" role="tabpanel" aria-labelledby="tabs-pre-register">
+                            <div class="flex flex-wrap items-center justify-between flex-1 px-2 mb-4 ">
+                                <button type="button" class="inline-flex items-center px-3 py-2 mb-3 text-sm font-medium leading-4 text-white bg-indigo-500 border border-transparent rounded-md shadow-sm md:mb-0 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                    Descargar XLS
+                                    <!-- Heroicon name: solid/mail -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20"
+                                        fill="currentColor">
+                                        <path fill-rule="evenodd"
+                                            d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </button>
+                                <div class="w-full sm:max-w-xs">
+                                    <label for="search" class="sr-only">Buscar...</label>
+                                    <div class="relative">
+                                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                            <!-- Heroicon name: solid/search -->
+                                            <svg class="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                <path fill-rule="evenodd"
+                                                    d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                        </div>
+                                        <input id="search" (keyup)="GetPreRegisterNaturalAllies()" [(ngModel)]="searchTermNaturalPre" name="search" class="block w-full py-2 pl-10 pr-3 text-sm placeholder-gray-500 bg-white border border-gray-300 rounded-md focus:outline-none focus:text-gray-900 focus:placeholder-gray-400 focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                            placeholder="Buscar...." type="search">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex flex-col">
+                                <div class="-my-2 overflow-x-auto ">
+                                    <div class="inline-block min-w-full py-2 align-middle sm:px-6 ">
+                                        <div class="p-4 mt-3 rounded-md bg-red-50" *ngIf="NaturalPreRegisteredDoctors.length === 0 ">
+                                            <div class="flex">
+                                                <div class="flex-shrink-0">
+                                                    <!-- Heroicon name: solid/x-circle -->
+                                                    <svg class="w-5 h-5 text-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                        <path fill-rule="evenodd"
+                                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                                                            clip-rule="evenodd" />
+                                                    </svg>
+                                                </div>
+                                                <div class="ml-3">
+                                                    <h3 class="text-sm font-medium text-red-800">No obtuvimos resultados
+                                                    </h3>
+                                                    <div class="mt-2 text-sm text-red-700">
+                                                        <ul role="list" class="pl-5 space-y-1 list-disc">
+                                                            <li>Vuelve a iniciar sesión</li>
+                                                            <li>Crea un nuevo aliado</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="overflow-x-auto border-b border-gray-200 shadow sm:rounded-lg">
+                                            <table class="min-w-full divide-y divide-gray-200" *ngIf="NaturalPreRegisteredDoctors.length > 0 ">
+                                                <thead class="bg-gray-50">
+                                                    <tr>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                            Nombre Completo</th>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                            Identificacion</th>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                            Correo electronico</th>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                            Estado</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="bg-white divide-y divide-gray-200">
+                                                    <tr *ngFor="let n of NaturalPreRegisteredDoctors">
+                                                        <td class="px-6 py-4 whitespace-nowrap">
+                                                            <div class="flex items-center">
+                                                                <div class="ml-4">
+                                                                    <div class="text-sm font-medium text-gray-900">
+                                                                        {{n.first_name}} {{n.last_name}} </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap">
+                                                            <div class="text-sm text-gray-900">{{n.document}} </div>
+                                                            <div class="text-sm text-gray-500">{{n.document_type}}</div>
+                                                        </td>
+                                                        <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                                            <div class="text-sm text-gray-500">{{n.email}}</div>
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap v ">
+                                                            <span class="inline-flex px-2 text-xs font-semibold leading-5 text-gray-800 bg-gray-100 rounded-full">
+                                                                Pre-registrado </span>
+                                                        </td>
+                                                    </tr>
+                                                    <!-- More people... -->
+                                                </tbody>
+                                            </table>
+
+                                            <nav class="flex items-center justify-between px-4 py-3 bg-white border-t border-gray-200 sm:px-6" aria-label="Pagination">
+                                                <div class="hidden sm:block">
+                                                    <p class="text-sm text-gray-700">
+                                                        Mostrando
+                                                        <span class="font-medium">{{this.offsetNaturalDoctorPreRegistered
+                                                            + 1 }}</span> a
+                                                        <span class="font-medium">{{this.limit *
+                                                            this.pageNaturalDoctorPreRegistered}}</span> de
+                                                        <span class="font-medium">{{this.resultsNaturalDoctorPreRegistered}}</span> resultados
+                                                    </p>
+                                                </div>
+                                                <div class="flex justify-between flex-1 sm:justify-end">
+                                                    <a (click)="PaginationPrerRegisteredNaturalDoctor(-1)" class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md cursor-pointer hover:bg-gray-50">
+                                                        Anterior </a>
+                                                    <a (click)="PaginationPrerRegisteredNaturalDoctor(1)" class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md cursor-pointer hover:bg-gray-50">
+                                                        Siguiente </a>
+                                                </div>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tabs-charged-docs" role="tabpanel" aria-labelledby="tabs-charged-docs">
+                            <div class="flex flex-col">
+                                <div class="flex flex-wrap items-center justify-between flex-1 px-2 mb-4 ">
+                                    <button type="button" class="inline-flex items-center px-3 py-2 mb-3 text-sm font-medium leading-4 text-white bg-indigo-500 border border-transparent rounded-md shadow-sm md:mb-0 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                        Descargar XLS
+                                        <!-- Heroicon name: solid/mail -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20"
+                                            fill="currentColor">
+                                            <path fill-rule="evenodd"
+                                                d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </button>
+                                    <div class="w-full sm:max-w-xs">
+                                        <label for="search" class="sr-only">Buscar...</label>
+                                        <div class="relative">
+                                            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                                <!-- Heroicon name: solid/search -->
+                                                <svg class="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                    <path fill-rule="evenodd"
+                                                        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                                        clip-rule="evenodd" />
+                                                </svg>
+                                            </div>
+                                            <input (keyup)="GetNaturalDoctorFilesCharged()" [(ngModel)]="searchTermNaturalFiles"  id="search" name="search" class="block w-full py-2 pl-10 pr-3 text-sm placeholder-gray-500 bg-white border border-gray-300 rounded-md focus:outline-none focus:text-gray-900 focus:placeholder-gray-400 focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                                placeholder="Buscar...." type="search">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="-my-2 overflow-x-auto ">
+                                    <div class="inline-block min-w-full py-2 align-middle sm:px-6 ">
+                                        <div class="p-4 mt-3 rounded-md bg-red-50" *ngIf="NaturalFilesSentDoctors.length === 0 ">
+                                            <div class="flex">
+                                                <div class="flex-shrink-0">
+                                                    <!-- Heroicon name: solid/x-circle -->
+                                                    <svg class="w-5 h-5 text-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                        <path fill-rule="evenodd"
+                                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                                                            clip-rule="evenodd" />
+                                                    </svg>
+                                                </div>
+                                                <div class="ml-3">
+                                                    <h3 class="text-sm font-medium text-red-800">No obtuvimos resultados
+                                                    </h3>
+                                                    <div class="mt-2 text-sm text-red-700">
+                                                        <ul role="list" class="pl-5 space-y-1 list-disc">
+                                                            <li>Vuelve a iniciar sesión</li>
+                                                            <li>Crea un nuevo aliado</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="overflow-x-auto border-b border-gray-200 shadow sm:rounded-lg">
+                                            <table class="min-w-full divide-y divide-gray-200" *ngIf="NaturalFilesSentDoctors.length > 0">
+                                                <thead class="bg-gray-50">
+                                                    <tr>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                            Nombre Completo</th>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                            Identificacion</th>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                            Correo electronico</th>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                            Estado</th>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="bg-white divide-y divide-gray-200">
+                                                    <tr *ngFor="let n of NaturalFilesSentDoctors">
+                                                        <td class="px-6 py-4 whitespace-nowrap">
+                                                            <div class="flex items-center">
+
+                                                                <div class="ml-4">
+                                                                    <div class="text-sm font-medium text-gray-900">
+                                                                        {{n.first_name}} {{n.last_name}} </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap">
+                                                            <div class="text-sm text-gray-900">{{n.document}} </div>
+                                                            <div class="text-sm text-gray-500">{{n.document_type}}</div>
+                                                        </td>
+                                                        <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                                            <div class="text-sm text-gray-500">{{n.email}}</div>
+                                                        </td>
+
+                                                        <td class="px-6 py-4 whitespace-nowrap v ">
+                                                            <span class="inline-flex px-2 text-xs font-semibold leading-5 text-blue-800 bg-green-100 rounded-full">Documentos
+                                                                cargados </span>
+                                                        </td>
+                                                        <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
+                                                            <a [routerLink]="['/Dashboard/allies/AlliesAprove', n.id, n.first_name +' '+ n.last_name ]" class="text-blue-600 hover:text-blue-900 hover:underline">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                                        stroke-width="2"
+                                                                        d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+                                                                </svg>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+
+                                                    <!-- More people... -->
+                                                </tbody>
+                                            </table>
+                                            <nav class="flex items-center justify-between px-4 py-3 bg-white border-t border-gray-200 sm:px-6" aria-label="Pagination">
+                                                <div class="hidden sm:block">
+                                                    <p class="text-sm text-gray-700">
+                                                        Mostrando
+                                                        <span class="font-medium">{{this.offsetNaturalDoctorFilesCharged
+                                                            + 1 }}</span> a
+                                                        <span class="font-medium">{{this.limit *
+                                                            this.pageNaturalDoctorFilesSent}}</span> de
+                                                        <span class="font-medium">{{this.resultsNaturalDoctorFilesSent}}</span> resultados
+                                                    </p>
+                                                </div>
+                                                <div class="flex justify-between flex-1 sm:justify-end">
+                                                    <a (click)="PaginationFilesChargeNaturalDoctor(-1)" class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md cursor-pointer hover:bg-gray-50">
+                                                        Anterior </a>
+                                                    <a (click)="PaginationFilesChargeNaturalDoctor(1)" class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md cursor-pointer hover:bg-gray-50">
+                                                        Siguiente </a>
+                                                </div>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tabs-enabled" role="tabpanel" aria-labelledby="tabs-enabled">
+                            <div class="flex flex-col">
+                                <div class="flex flex-wrap items-center justify-between flex-1 px-2 mb-4 ">
+                                    <button type="button" class="inline-flex items-center px-3 py-2 mb-3 text-sm font-medium leading-4 text-white bg-indigo-500 border border-transparent rounded-md shadow-sm md:mb-0 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                        Descargar XLS
+                                        <!-- Heroicon name: solid/mail -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20"
+                                            fill="currentColor">
+                                            <path fill-rule="evenodd"
+                                                d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </button>
+                                    <div class="w-full sm:max-w-xs">
+                                        <label for="search" class="sr-only">Buscar...</label>
+                                        <div class="relative">
+                                            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                                <!-- Heroicon name: solid/search -->
+                                                <svg class="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                    <path fill-rule="evenodd"
+                                                        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                                        clip-rule="evenodd" />
+                                                </svg>
+                                            </div>
+                                            <input  (keyup)="GetNaturalDoctorsEnable()" [(ngModel)]="searchTermNaturalEnabled" id="search"  name="search" class="block w-full py-2 pl-10 pr-3 text-sm placeholder-gray-500 bg-white border border-gray-300 rounded-md focus:outline-none focus:text-gray-900 focus:placeholder-gray-400 focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                                placeholder="Buscar...." type="search">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="-my-2 overflow-x-auto ">
+                                    <div class="p-4 mt-3 rounded-md bg-red-50" *ngIf="NaturalEnabledDoctors.length === 0 ">
+                                        <div class="flex">
+                                            <div class="flex-shrink-0">
+                                                <!-- Heroicon name: solid/x-circle -->
+                                                <svg class="w-5 h-5 text-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                    <path fill-rule="evenodd"
+                                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                                                        clip-rule="evenodd" />
+                                                </svg>
+                                            </div>
+                                            <div class="ml-3">
+                                                <h3 class="text-sm font-medium text-red-800">No obtuvimos resultados
+                                                </h3>
+                                                <div class="mt-2 text-sm text-red-700">
+                                                    <ul role="list" class="pl-5 space-y-1 list-disc">
+                                                        <li>Vuelve a iniciar sesión</li>
+                                                        <li>Crea un nuevo aliado</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="inline-block min-w-full py-2 align-middle sm:px-6">
+                                        <div class="border-b border-gray-200 shadow sm:rounded-lg">
+                                            <table class="min-w-full divide-y divide-gray-200" *ngIf="NaturalEnabledDoctors.length > 0">
+                                                <thead class="bg-gray-50">
+                                                    <tr>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                            Nombre Completo</th>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                            Identificacion</th>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                            Correo electronico</th>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                            Servicios</th>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                            Estado</th>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="bg-white divide-y divide-gray-200">
+                                                    <!--  -->
+                                                    <tr *ngFor="let m of NaturalEnabledDoctors" class="cursor-pointer hover:bg-gray-100">
+                                                        <td class="px-6 py-4 whitespace-nowrap">
+                                                            <div class="flex items-center">
+                                                                <div class="ml-4">
+                                                                    <div class="text-sm font-medium text-gray-900">
+                                                                        {{m.first_name}} {{m.last_name}}</div>
+
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap">
+                                                            <div class="text-sm text-gray-900">{{m.document}} </div>
+                                                            <div class="text-sm text-gray-500">{{m.document_type}}</div>
+                                                        </td>
+                                                        <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                                            <div class="text-sm text-gray-500">{{m.email}}</div>
+                                                        </td>
+                                                        <td class="px-6 py-4 text-center whitespace-nowrap ">
+                                                            <span class="inline-flex px-2 text-xs font-semibold leading-5 rounded-full cursor-pointer hover:underline" [routerLink]="['/Dashboard/allies/AlliesServices', m.id]">{{m.services_count}}
+                                                            </span>
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap v ">
+                                                            <span class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full">Habilitados
+                                                            </span>
+                                                        </td>
+                                                        <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
+
+                                                            <div class="relative dropstart">
+                                                                <button class="  dropdown-toggle px-6 py-2.5  text-green-600 hover:text-green-900  font-medium text-xs leading-tight   uppercase rounded   shadow-md  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg active:text-white transition duration-150 ease-in-out   flex  items-center whitespace-nowrap"
+                                                                    type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                                                      </svg>
+                                                                </button>
+                                                                <ul class="absolute z-50 hidden float-left py-2 mt-1 text-base text-left list-none bg-white border-none rounded-lg shadow-lg dropdown-menu user-actions min-w-max bg-clip-padding" aria-labelledby="dropdownMenuButton1">
+                                                                    <li>
+                                                                        <a class="block w-full px-4 py-2 text-sm font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-100" [routerLink]="['/Dashboard/allies/AlliesEnableDisable', m.id, 'disabled']">Deshabilitar</a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a class="block w-full px-4 py-2 text-sm font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-100" [routerLink]="['/Dashboard/allies/AlliesAprove&PendingServices', m.id, m.first_name + ' ' + m.last_name]">Servicios y descuentos</a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a class="block w-full px-4 py-2 text-sm font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-100" [routerLink]="['/Dashboard/allies/SpecialtiesAsigned', m.id, 'natural']">Especialidades</a>
+                                                                    </li>
+                                                                </ul>
+
+                                                            </div>
+
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <nav class="flex items-center justify-between px-4 py-3 bg-white border-t border-gray-200 sm:px-6" aria-label="Pagination">
+                                                <div class="hidden sm:block">
+                                                    <p class="text-sm text-gray-700">
+                                                        Mostrando
+                                                        <span class="font-medium">{{this.offsetNaturalDoctorEnabled + 1
+                                                            }}</span> a
+                                                        <span class="font-medium">{{this.limit *
+                                                            this.pageNaturalDoctorEnabled}}</span> de
+                                                        <span class="font-medium">{{this.resultsNaturalDoctorEnable}}</span> resultados
+                                                    </p>
+                                                </div>
+                                                <div class="flex justify-between flex-1 sm:justify-end">
+                                                    <a (click)="PaginationEnableNaturalDoctor(-1)" class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md cursor-pointer hover:bg-gray-50">
+                                                        Anterior </a>
+                                                    <a (click)="PaginationEnableNaturalDoctor(1)" class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md cursor-pointer hover:bg-gray-50">
+                                                        Siguiente </a>
+                                                </div>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tabs-disabled" role="tabpanel" aria-labelledby="tabs-disabled">
+                            <div class="flex flex-col">
+                                <div class="flex flex-wrap items-center justify-between flex-1 px-2 mb-4 ">
+                                    <button type="button" class="inline-flex items-center px-3 py-2 mb-3 text-sm font-medium leading-4 text-white bg-indigo-500 border border-transparent rounded-md shadow-sm md:mb-0 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                        Descargar XLS
+                                        <!-- Heroicon name: solid/mail -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20"
+                                            fill="currentColor">
+                                            <path fill-rule="evenodd"
+                                                d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </button>
+                                    <div class="w-full sm:max-w-xs">
+                                        <label for="search" class="sr-only">Buscar...</label>
+                                        <div class="relative">
+                                            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                                <!-- Heroicon name: solid/search -->
+                                                <svg class="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                    <path fill-rule="evenodd"
+                                                        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                                        clip-rule="evenodd" />
+                                                </svg>
+                                            </div>
+                                            <input  (keyup)="GetNaturalDoctorsDisabled()" [(ngModel)]="searchTermNaturalDisabled" id="search" name="search" class="block w-full py-2 pl-10 pr-3 text-sm placeholder-gray-500 bg-white border border-gray-300 rounded-md focus:outline-none focus:text-gray-900 focus:placeholder-gray-400 focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                                placeholder="Buscar...." type="search">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="-my-2 overflow-x-auto ">
+                                    <div class="p-4 mt-3 rounded-md bg-red-50" *ngIf="NaturalDisabledDoctors.length === 0 ">
+                                        <div class="flex">
+                                            <div class="flex-shrink-0">
+                                                <!-- Heroicon name: solid/x-circle -->
+                                                <svg class="w-5 h-5 text-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                    <path fill-rule="evenodd"
+                                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                                                        clip-rule="evenodd" />
+                                                </svg>
+                                            </div>
+                                            <div class="ml-3">
+                                                <h3 class="text-sm font-medium text-red-800">No obtuvimos resultados
+                                                </h3>
+                                                <div class="mt-2 text-sm text-red-700">
+                                                    <ul role="list" class="pl-5 space-y-1 list-disc">
+                                                        <li>Vuelve a iniciar sesión</li>
+                                                        <li>Crea un nuevo aliado</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="inline-block min-w-full py-2 align-middle sm:px-6">
+                                        <div class="overflow-x-auto border-b border-gray-200 shadow sm:rounded-lg">
+                                            <table class="min-w-full divide-y divide-gray-200" *ngIf="NaturalDisabledDoctors.length > 0">
+                                                <thead class="bg-gray-50">
+                                                    <tr>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                            Nombre Completo</th>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                            Identificacion</th>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                            Correo electronico</th>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                            Estado</th>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="bg-white divide-y divide-gray-200">
+                                                    <tr *ngFor="let n of NaturalDisabledDoctors">
+                                                        <td class="px-6 py-4 whitespace-nowrap">
+                                                            <div class="flex items-center">
+
+                                                                <div class="ml-4">
+                                                                    <div class="text-sm font-medium text-gray-900">
+                                                                        {{n.first_name}} {{n.last_name}}</div>
+
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap">
+                                                            <div class="text-sm text-gray-900">{{n.document}} </div>
+                                                            <div class="text-sm text-gray-500">{{n.document_type}}</div>
+                                                        </td>
+                                                        <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                                            <div class="text-sm text-gray-500">{{n.email}}</div>
+                                                        </td>
+
+                                                        <td class="px-6 py-4 whitespace-nowrap v ">
+                                                            <span class="inline-flex px-2 text-xs font-semibold leading-5 text-red-800 bg-red-100 rounded-full">Inhabilitado
+                                                            </span>
+                                                        </td>
+                                                        <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
+                                                            <a [routerLink]="['/Dashboard/allies/AlliesEnableDisable', n.id, 'enabled']" class="text-red-600 hover:text-red-900">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                                        stroke-width="2"
+                                                                        d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                                                </svg>
+                                                            </a>
+
+                                                        </td>
+                                                    </tr>
+
+                                                    <!-- More people... -->
+                                                </tbody>
+                                            </table>
+                                            <nav class="flex items-center justify-between px-4 py-3 bg-white border-t border-gray-200 sm:px-6" aria-label="Pagination">
+                                                <div class="hidden sm:block">
+                                                    <p class="text-sm text-gray-700">
+                                                        Mostrando
+                                                        <span class="font-medium">{{this.offsetNaturalDoctorDisabled + 1
+                                                            }}</span> a
+                                                        <span class="font-medium">{{this.limit *
+                                                            this.pageNaturalDoctorDisabled}}</span> de
+                                                        <span class="font-medium">{{this.resultsNaturalDoctorDisabled}}</span> resultados
+                                                    </p>
+                                                </div>
+                                                <div class="flex justify-between flex-1 sm:justify-end">
+                                                    <a (click)="PaginationDisabledNaturalDoctor(-1)" class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md cursor-pointer hover:bg-gray-50">
+                                                        Anterior </a>
+                                                    <a (click)="PaginationDisabledNaturalDoctor(1)" class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md cursor-pointer hover:bg-gray-50">
+                                                        Siguiente </a>
+                                                </div>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- LEGAL STAFF ALLIES -->
+
+<div class="mt-8">
+    <div class="max-w-6xl mx-auto sm:px-6 ">
+        <div class="container px-4 mx-auto sm:px-6 lg:px-8">
+            <div class="inline-flex" style="color: #6F6F6F;">
+                <h2 class="mb-4 text-xl font-semibold">Aliados - Jurídicos</h2>
+            </div>
+            <div class="flex w-full">
+                <div class="block w-full p-6 bg-white rounded-lg shadow-lg ">
+                    <ul class="flex flex-col flex-wrap pl-0 mb-4 list-none border-b-0 nav nav-tabs nav-justified md:flex-row" id="tabs-tabJustify" role="tablist">
+                        <li (click)="searchTerm === ''" class="flex-grow text-center nav-item" role="presentation">
+                            <a href="#tabs-pre-register-legal-staff" class="tab-item active" id="tabs-profile-tabJustify" data-bs-toggle="pill" data-bs-target="#tabs-pre-register-legal-staff" role="tab" aria-controls="tabs-pre-register" aria-selected="false">Registrados</a>
+                        </li>
+                        <li (click)="searchTerm === ''" class="flex-grow text-center nav-item" role="presentation">
+                            <a href="#tabs-charged-docs-legal-staff" class="tab-item" id="tabs-profile-tabJustify" data-bs-toggle="pill" data-bs-target="#tabs-charged-docs-legal-staff" role="tab" aria-controls="tabs-charged-docs" aria-selected="false">Documentos cargados</a>
+                        </li>
+                        <li (click)="searchTerm === ''" class="flex-grow text-center nav-item" role="presentation">
+                            <a href="#tabs-enabled-legal-staff" class=" tab-item" data-bs-toggle="pill" data-bs-target="#tabs-enabled-legal-staff" role="tab" aria-controls="tabs-enabled-legal-staff" aria-selected="false">Habilitados</a>
+                        </li>
+                        <li (click)="searchTerm === ''" class="flex-grow text-center nav-item" role="presentation">
+                            <a href="#tabs-disabled-legal-staff" class="tab-item" id="tabs-profile-tabJustify" data-bs-toggle="pill" data-bs-target="#tabs-disabled-legal-staff" role="tab" aria-selected="false">Inhabilitados</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="tabs-tabContentJustify">
+                        <div class="tab-pane fade show active" id="tabs-pre-register-legal-staff" role="tabpanel" aria-labelledby="tabs-pre-register-legal-staff">
+                            <div class="flex flex-wrap items-center justify-between flex-1 px-2 mb-4 ">
+                                <button type="button" class="inline-flex items-center px-3 py-2 mb-3 text-sm font-medium leading-4 text-white bg-indigo-500 border border-transparent rounded-md shadow-sm md:mb-0 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                    Descargar XLS
+                                    <!-- Heroicon name: solid/mail -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20"
+                                        fill="currentColor">
+                                        <path fill-rule="evenodd"
+                                            d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </button>
+                                <div class="w-full sm:max-w-xs">
+                                    <label for="search" class="sr-only">Buscar...</label>
+                                    <div class="relative">
+                                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                            <!-- Heroicon name: solid/search -->
+                                            <svg class="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                <path fill-rule="evenodd"
+                                                    d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                        </div>
+                                        <input (keyup)="GetPreRegisteredLegalStaff()" [(ngModel)]="searchTermLegalPre" id="search" name="search" class="block w-full py-2 pl-10 pr-3 text-sm placeholder-gray-500 bg-white border border-gray-300 rounded-md focus:outline-none focus:text-gray-900 focus:placeholder-gray-400 focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                            placeholder="Buscar...." type="search">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex flex-col">
+                                <div class="-my-2 overflow-x-auto ">
+                                    <div class="inline-block min-w-full py-2 align-middle sm:px-6 ">
+                                        <div class="p-4 mt-3 rounded-md bg-red-50" *ngIf="LegalPreRegisteredStaffs.length === 0 ">
+                                            <div class="flex">
+                                                <div class="flex-shrink-0">
+                                                    <!-- Heroicon name: solid/x-circle -->
+                                                    <svg class="w-5 h-5 text-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                        <path fill-rule="evenodd"
+                                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                                                            clip-rule="evenodd" />
+                                                    </svg>
+                                                </div>
+                                                <div class="ml-3">
+                                                    <h3 class="text-sm font-medium text-red-800">No obtuvimos resultados
+                                                    </h3>
+                                                    <div class="mt-2 text-sm text-red-700">
+                                                        <ul role="list" class="pl-5 space-y-1 list-disc">
+                                                            <li>Vuelve a iniciar sesión</li>
+                                                            <li>Crea un nuevo aliado</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="overflow-x-auto border-b border-gray-200 shadow sm:rounded-lg">
+                                            <table class="min-w-full divide-y divide-gray-200" *ngIf="LegalPreRegisteredStaffs.length > 0 ">
+                                                <thead class="bg-gray-50">
+                                                    <tr>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                            Razón social </th>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                            Identificacion R.Legal</th>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                            Correo electronico</th>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                            Estado</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="bg-white divide-y divide-gray-200">
+                                                    <tr *ngFor="let n of LegalPreRegisteredStaffs">
+                                                        <td class="px-6 py-4 whitespace-nowrap">
+                                                            <div class="text-sm text-gray-900">{{n.company_set?.name || '' }} </div>
+                                                            <div class="text-sm text-gray-500">{{n.company_set?.nit || ''}}</div>
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap">
+                                                            <div class="text-sm text-gray-900">{{n.document}} </div>
+                                                            <div class="text-sm text-gray-500">{{n.document_type}}</div>
+                                                        </td>
+                                                        <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                                            <div class="text-sm text-gray-500">{{n.email}}</div>
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap v ">
+                                                            <span class="inline-flex px-2 text-xs font-semibold leading-5 text-gray-800 bg-gray-100 rounded-full">
+                                                                Pre-registrado </span>
+                                                        </td>
+                                                    </tr>
+                                                    <!-- More people... -->
+                                                </tbody>
+                                            </table>
+
+                                            <nav class="flex items-center justify-between px-4 py-3 bg-white border-t border-gray-200 sm:px-6" aria-label="Pagination">
+                                                <div class="hidden sm:block">
+                                                    <p class="text-sm text-gray-700">
+                                                        Mostrando
+                                                        <span class="font-medium">{{this.offsetPreRegisteredLegalStaff +
+                                                            1 }}</span> a
+                                                        <span class="font-medium">{{this.limit *
+                                                            this.pagePreRegisteredLegalStaff}}</span> de
+                                                        <span class="font-medium">{{this.resultPreRegisteredsLegalStaff}}</span> resultados
+                                                    </p>
+                                                </div>
+                                                <div class="flex justify-between flex-1 sm:justify-end">
+                                                    <a (click)="PaginationPreRegisteredLegalStaff(-1)" class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md cursor-pointer hover:bg-gray-50">
+                                                        Anterior </a>
+                                                    <a (click)="PaginationPreRegisteredLegalStaff(1)" class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md cursor-pointer hover:bg-gray-50">
+                                                        Siguiente </a>
+                                                </div>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tabs-charged-docs-legal-staff" role="tabpanel" aria-labelledby="tabs-charged-docs-legal-staff">
+                            <div class="flex flex-col">
+                                <div class="flex flex-wrap items-center justify-between flex-1 px-2 mb-4 ">
+                                    <button type="button" class="inline-flex items-center px-3 py-2 mb-3 text-sm font-medium leading-4 text-white bg-indigo-500 border border-transparent rounded-md shadow-sm md:mb-0 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                        Descargar XLS
+                                        <!-- Heroicon name: solid/mail -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20"
+                                            fill="currentColor">
+                                            <path fill-rule="evenodd"
+                                                d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </button>
+
+                                    <div class="w-full sm:max-w-xs">
+                                        <label for="search" class="sr-only">Buscar...</label>
+                                        <div class="relative">
+                                            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                                <!-- Heroicon name: solid/search -->
+                                                <svg class="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                    <path fill-rule="evenodd"
+                                                        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                                        clip-rule="evenodd" />
+                                                </svg>
+                                            </div>
+                                            <input (keyup)="GetLegalStaffFilesCharged()" [(ngModel)]="searchTermLegalFiles"  id="search" name="search" class="block w-full py-2 pl-10 pr-3 text-sm placeholder-gray-500 bg-white border border-gray-300 rounded-md focus:outline-none focus:text-gray-900 focus:placeholder-gray-400 focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                                placeholder="Buscar...." type="search">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="-my-2 overflow-x-auto ">
+                                    <div class="inline-block min-w-full py-2 align-middle sm:px-6 ">
+                                        <div class="p-4 mt-3 rounded-md bg-red-50" *ngIf="LegalFilesChargeStaffs.length === 0 ">
+                                            <div class="flex">
+                                                <div class="flex-shrink-0">
+                                                    <!-- Heroicon name: solid/x-circle -->
+                                                    <svg class="w-5 h-5 text-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                        <path fill-rule="evenodd"
+                                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                                                            clip-rule="evenodd" />
+                                                    </svg>
+                                                </div>
+                                                <div class="ml-3">
+                                                    <h3 class="text-sm font-medium text-red-800">No obtuvimos resultados
+                                                    </h3>
+                                                    <div class="mt-2 text-sm text-red-700">
+                                                        <ul role="list" class="pl-5 space-y-1 list-disc">
+                                                            <li>Vuelve a iniciar sesión</li>
+                                                            <li>Crea un nuevo aliado</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="overflow-x-auto border-b border-gray-200 shadow sm:rounded-lg">
+                                            <table class="min-w-full divide-y divide-gray-200" *ngIf="LegalFilesChargeStaffs.length > 0">
+                                                <thead class="bg-gray-50">
+                                                    <tr>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                            Razón social</th>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                            Identificacion R.Legal</th>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                            Correo electronico</th>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                            Estado</th>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="bg-white divide-y divide-gray-200">
+                                                    <tr *ngFor="let n of LegalFilesChargeStaffs">
+                                                        <td class="px-6 py-4 whitespace-nowrap">
+                                                            <div class="text-sm text-gray-900">{{n.company_set?.name || '' }} </div>
+                                                            <div class="text-sm text-gray-500">{{n.company_set?.nit || ''}}</div>
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap">
+                                                            <div class="text-sm text-gray-900">{{n.document}} </div>
+                                                            <div class="text-sm text-gray-500">{{n.document_type}}</div>
+                                                        </td>
+                                                        <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                                            <div class="text-sm text-gray-500">{{n.email}}</div>
+                                                        </td>
+
+                                                        <td class="px-6 py-4 whitespace-nowrap v ">
+                                                            <span class="inline-flex px-2 text-xs font-semibold leading-5 text-blue-800 bg-green-100 rounded-full">Documentos
+                                                                cargados </span>
+                                                        </td>
+                                                        <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
+                                                            <a [routerLink]="['/Dashboard/allies/AlliesAprove', n.id, n.company_set.name]" class="text-blue-600 hover:text-blue-900 hover:underline">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                                        stroke-width="2"
+                                                                        d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+                                                                </svg>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+
+                                                    <!-- More people... -->
+                                                </tbody>
+                                            </table>
+                                            <nav class="flex items-center justify-between px-4 py-3 bg-white border-t border-gray-200 sm:px-6" aria-label="Pagination">
+                                                <div class="hidden sm:block">
+                                                    <p class="text-sm text-gray-700">
+                                                        Mostrando
+                                                        <span class="font-medium">{{this.offsetFilesChargeLegalStaff + 1
+                                                            }}</span> a
+                                                        <span class="font-medium">{{this.limit *
+                                                            this.pageFilesChargeLegalStaff}}</span> de
+                                                        <span class="font-medium">{{this.resultFilesChargedLegalStaff}}</span> resultados
+                                                    </p>
+                                                </div>
+                                                <div class="flex justify-between flex-1 sm:justify-end">
+                                                    <a (click)="PaginationFilesChargeLegalStaff(-1)" class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md cursor-pointer hover:bg-gray-50">
+                                                        Anterior </a>
+                                                    <a (click)="PaginationFilesChargeLegalStaff(1)" class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md cursor-pointer hover:bg-gray-50">
+                                                        Siguiente </a>
+                                                </div>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tabs-enabled-legal-staff" role="tabpanel" aria-labelledby="tabs-enabled-legal-staff">
+                            <div class="flex flex-col">
+                                <div class="flex flex-wrap items-center justify-between flex-1 px-2 mb-4 ">
+                                    <button type="button" class="inline-flex items-center px-3 py-2 mb-3 text-sm font-medium leading-4 text-white bg-indigo-500 border border-transparent rounded-md shadow-sm md:mb-0 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                        Descargar XLS
+                                        <!-- Heroicon name: solid/mail -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20"
+                                            fill="currentColor">
+                                            <path fill-rule="evenodd"
+                                                d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </button>
+                                    <div class="w-full sm:max-w-xs">
+                                        <label for="search" class="sr-only">Buscar...</label>
+                                        <div class="relative">
+                                            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                                <!-- Heroicon name: solid/search -->
+                                                <svg class="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                    <path fill-rule="evenodd"
+                                                        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                                        clip-rule="evenodd" />
+                                                </svg>
+                                            </div>
+                                            <input (keyup)="GetLegalStaffEnable()" [(ngModel)]="searchTermLegalEnabled" id="search" name="search" class="block w-full py-2 pl-10 pr-3 text-sm placeholder-gray-500 bg-white border border-gray-300 rounded-md focus:outline-none focus:text-gray-900 focus:placeholder-gray-400 focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                                placeholder="Buscar...." type="search">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="-my-2 overflow-x-auto ">
+                                    <div class="p-4 mt-3 rounded-md bg-red-50" *ngIf="LegalEnabledStaffs.length === 0 ">
+                                        <div class="flex">
+                                            <div class="flex-shrink-0">
+                                                <!-- Heroicon name: solid/x-circle -->
+                                                <svg class="w-5 h-5 text-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                    <path fill-rule="evenodd"
+                                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                                                        clip-rule="evenodd" />
+                                                </svg>
+                                            </div>
+                                            <div class="ml-3">
+                                                <h3 class="text-sm font-medium text-red-800">No obtuvimos resultados
+                                                </h3>
+                                                <div class="mt-2 text-sm text-red-700">
+                                                    <ul role="list" class="pl-5 space-y-1 list-disc">
+                                                        <li>Vuelve a iniciar sesión</li>
+                                                        <li>Crea un nuevo aliado</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="inline-block min-w-full py-2 align-middle sm:px-6">
+                                        <div class="border-b border-gray-200 shadow sm:rounded-lg">
+                                            <table class="min-w-full divide-y divide-gray-200" *ngIf="LegalEnabledStaffs.length > 0">
+                                                <thead class="bg-gray-50">
+                                                    <tr>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                            Razón social</th>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                            Identificacion R.Legal</th>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                            Correo electronico</th>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                            Servicios</th>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                            Estado</th>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="bg-white divide-y divide-gray-200">
+                                                    <tr *ngFor="let m of LegalEnabledStaffs" class="cursor-pointer hover:bg-gray-100">
+                                                        <td class="px-6 py-4 whitespace-nowrap">
+                                                            <div class="text-sm text-gray-900">{{m.company_set?.name || '' }} </div>
+                                                            <div class="text-sm text-gray-500">{{m.company_set?.nit || ''}}</div>
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap">
+                                                            <div class="text-sm text-gray-900">{{m.document}} </div>
+                                                            <div class="text-sm text-gray-500">{{m.document_type}}</div>
+                                                        </td>
+                                                        <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                                            <div class="text-sm text-gray-500">{{m.email}}</div>
+                                                        </td>
+                                                        <td class="px-6 py-4 text-center whitespace-nowrap ">
+                                                            <span class="inline-flex px-2 text-xs font-semibold leading-5 rounded-full cursor-pointer hover:underline" [routerLink]="['/Dashboard/allies/AlliesServices', m.id]">{{m.services_count}}
+                                                            </span>
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap v ">
+                                                            <span class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full">Habilitados
+                                                            </span>
+                                                        </td>
+                                                        <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
+                                                            <div class="relative dropstart">
+                                                                <button class="  dropdown-toggle px-6 py-2.5  text-green-600 hover:text-green-900  font-medium text-xs leading-tight   uppercase rounded   shadow-md  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg active:text-white transition duration-150 ease-in-out   flex  items-center whitespace-nowrap"
+                                                                    type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                                                          </svg>
+                                                                    </button>
+                                                                <ul class="absolute z-50 hidden float-left py-2 mt-1 text-base text-left list-none bg-white border-none rounded-lg shadow-lg dropdown-menu user-actions min-w-max bg-clip-padding" aria-labelledby="dropdownMenuButton1">
+                                                                    <li>
+                                                                        <a class="block w-full px-4 py-2 text-sm font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-100" [routerLink]="['/Dashboard/allies/AlliesEnableDisable', m.id, 'disabled']">Deshabilitar</a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a class="block w-full px-4 py-2 text-sm font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-100" [routerLink]="['/Dashboard/allies/AlliesAprove&PendingServices', m.id, m.company_set?.name || '']">Servicios y descuentos</a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a class="block w-full px-4 py-2 text-sm font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-100" [routerLink]="['/Dashboard/allies/SpecialtiesAsigned', m.id, 'legalStaff']">Especialidades</a>
+                                                                    </li>
+                                                                </ul>
+
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <nav class="flex items-center justify-between px-4 py-3 bg-white border-t border-gray-200 sm:px-6" aria-label="Pagination">
+                                                <div class="hidden sm:block">
+                                                    <p class="text-sm text-gray-700">
+                                                        Mostrando
+                                                        <span class="font-medium">{{this.offsetEnableLegalStaff + 1
+                                                            }}</span> a
+                                                        <span class="font-medium">{{this.limit *
+                                                            this.pageEnableLegalStaff}}</span> de
+                                                        <span class="font-medium">{{this.resultEnableLegalStaff}}</span> resultados
+                                                    </p>
+                                                </div>
+                                                <div class="flex justify-between flex-1 sm:justify-end">
+                                                    <a (click)="PaginationEnableLegalStaff(-1)" class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md cursor-pointer hover:bg-gray-50">
+                                                        Anterior </a>
+                                                    <a (click)="PaginationEnableLegalStaff(1)" class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md cursor-pointer hover:bg-gray-50">
+                                                        Siguiente </a>
+                                                </div>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tabs-disabled-legal-staff" role="tabpanel" aria-labelledby="tabs-disabled-legal-staff">
+                            <div class="flex flex-col">
+                                <div class="flex flex-wrap items-center justify-between flex-1 px-2 mb-4 ">
+                                    <button type="button" class="inline-flex items-center px-3 py-2 mb-3 text-sm font-medium leading-4 text-white bg-indigo-500 border border-transparent rounded-md shadow-sm md:mb-0 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                        Descargar XLS
+                                        <!-- Heroicon name: solid/mail -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20"
+                                            fill="currentColor">
+                                            <path fill-rule="evenodd"
+                                                d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </button>
+                                    <div class="w-full sm:max-w-xs">
+                                        <label for="search" class="sr-only">Buscar...</label>
+                                        <div class="relative">
+                                            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                                <!-- Heroicon name: solid/search -->
+                                                <svg class="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                    <path fill-rule="evenodd"
+                                                        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                                        clip-rule="evenodd" />
+                                                </svg>
+                                            </div>
+                                            <input (keyup)="GetLegalStaffDisabled()" [(ngModel)]="searchTermLegalDisabled" id="search" name="search" class="block w-full py-2 pl-10 pr-3 text-sm placeholder-gray-500 bg-white border border-gray-300 rounded-md focus:outline-none focus:text-gray-900 focus:placeholder-gray-400 focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                                placeholder="Buscar...." type="search">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="-my-2 overflow-x-auto ">
+                                    <div class="p-4 mt-3 rounded-md bg-red-50" *ngIf="LegalDisabledStaffs.length === 0 ">
+                                        <div class="flex">
+                                            <div class="flex-shrink-0">
+                                                <!-- Heroicon name: solid/x-circle -->
+                                                <svg class="w-5 h-5 text-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                    <path fill-rule="evenodd"
+                                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                                                        clip-rule="evenodd" />
+                                                </svg>
+                                            </div>
+                                            <div class="ml-3">
+                                                <h3 class="text-sm font-medium text-red-800">No obtuvimos resultados
+                                                </h3>
+                                                <div class="mt-2 text-sm text-red-700">
+                                                    <ul role="list" class="pl-5 space-y-1 list-disc">
+                                                        <li>Vuelve a iniciar sesión</li>
+                                                        <li>Crea un nuevo aliado</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="inline-block min-w-full py-2 align-middle sm:px-6">
+                                        <div class="overflow-x-auto border-b border-gray-200 shadow sm:rounded-lg">
+                                            <table class="min-w-full divide-y divide-gray-200" *ngIf="LegalDisabledStaffs.length > 0">
+                                                <thead class="bg-gray-50">
+                                                    <tr>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                            Razón social</th>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                            Identificacion R.Legal</th>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                            Correo electronico</th>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                            Estado</th>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="bg-white divide-y divide-gray-200">
+                                                    <tr *ngFor="let n of LegalDisabledStaffs">
+                                                        <td class="px-6 py-4 whitespace-nowrap">
+                                                            <div class="text-sm text-gray-900">{{n.company_set?.name || '' }} </div>
+                                                            <div class="text-sm text-gray-500">{{n.company_set?.nit || ''}}</div>
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap">
+                                                            <div class="text-sm text-gray-900">{{n.document}} </div>
+                                                            <div class="text-sm text-gray-500">{{n.document_type}}</div>
+                                                        </td>
+                                                        <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                                            <div class="text-sm text-gray-500">{{n.email}}</div>
+                                                        </td>
+
+                                                        <td class="px-6 py-4 whitespace-nowrap v ">
+                                                            <span class="inline-flex px-2 text-xs font-semibold leading-5 text-red-800 bg-red-100 rounded-full">Inhabilitado
+                                                            </span>
+                                                        </td>
+                                                        <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
+                                                            <a [routerLink]="['/Dashboard/allies/AlliesEnableDisable', n.id, 'enabled']" class="text-red-600 hover:text-red-900">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                                        stroke-width="2"
+                                                                        d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                                                </svg>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+
+                                                    <!-- More people... -->
+                                                </tbody>
+                                            </table>
+                                            <nav class="flex items-center justify-between px-4 py-3 bg-white border-t border-gray-200 sm:px-6" aria-label="Pagination">
+                                                <div class="hidden sm:block">
+                                                    <p class="text-sm text-gray-700">
+                                                        Mostrando
+                                                        <span class="font-medium">{{this.offsetDisableLegalStaff + 1
+                                                            }}</span> a
+                                                        <span class="font-medium">{{this.limit *
+                                                            this.pageDisabledLegalStaff}}</span> de
+                                                        <span class="font-medium">{{this.resultDisabledLegalStaff}}</span> resultados
+                                                    </p>
+                                                </div>
+                                                <div class="flex justify-between flex-1 sm:justify-end">
+                                                    <a (click)="PaginationDisabledLegalStaff(-1)" class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md cursor-pointer hover:bg-gray-50">
+                                                        Anterior </a>
+                                                    <a (click)="PaginationDisabledLegalStaff(1)" class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md cursor-pointer hover:bg-gray-50">
+                                                        Siguiente </a>
+                                                </div>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

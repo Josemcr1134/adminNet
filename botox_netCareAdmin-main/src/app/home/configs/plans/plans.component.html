@@ -1,0 +1,187 @@
+<div class="mt-8">
+    <div class="max-w-6xl mx-auto  sm:px-6 ">
+
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="inline-flex" style="color: #6F6F6F;">
+                <h2 class="text-xl  mb-4 font-semibold">Configuraciones - Planes</h2>
+            </div>
+
+
+            <div class="flex w-full">
+                <div class="block p-6 rounded-lg shadow-lg w-full bg-white ">
+                    <ul class=" nav nav-tabs nav-justified flex flex-col md:flex-row flex-wrap list-none border-b-0  pl-0 mb-4" id="tabs-tabJustify" role="tablist">
+
+                        <li class="nav-item flex-grow text-center" role="presentation">
+                            <a href="#tabs-config-plans" class=" tab-item active show  " data-bs-toggle="pill" data-bs-target="#tabs-config-plans" role="tab" aria-controls="tabs-config-plans" aria-selected="false">Listado</a>
+                        </li>
+                        <li class="nav-item flex-grow text-center" role="presentation">
+                            <a href="#tabs-config-new-plan" class="tab-item" id="tabs-profile-tabJustify" data-bs-toggle="pill" data-bs-target="#tabs-config-new-plan" role="tab" aria-selected="false">Nuevo Plan</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="tabs-tabContentJustify">
+                        <div class="tab-pane fade show active" id="tabs-config-plans" role="tabpanel" aria-labelledby="tabs-config-plans">
+                            <div class="w-full  mb-3 mt-4 flex justify-end ">
+                                <label for="search" class="sr-only">Buscar...</label>
+                                <div class="relative">
+                                    <div class="pointer-events-none absolute inset-y-0 left-0 pl-3 flex items-center">
+                                        <!-- Heroicon name: solid/search -->
+                                        <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                    <input (keyup)="getPlans()" [(ngModel)]="searchTerm" id="search" name="search" class="block w-full bg-white border border-gray-300 rounded-md py-2 pl-10 pr-3 text-sm placeholder-gray-500 focus:outline-none focus:text-gray-900 focus:placeholder-gray-400 focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                        placeholder="Buscar...." type="search">
+                                </div>
+                            </div>
+                            <div class="flex flex-col">
+                                <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                                        <div class="shadow overflow-x-auto border-b border-gray-200 sm:rounded-lg">
+                                            <div *ngIf="Plans.length === 0" class="rounded-md bg-red-50 p-4">
+                                                <div class="flex">
+                                                    <div class="ml-3">
+                                                        <h3 class="text-sm   font-medium text-red-800">No hay planes disponibles</h3>
+                                                        <div class="mt-2 text-sm text-red-700">
+                                                            <ul role="list" class="list-disc pl-5 space-y-1">
+                                                                <li>Crea uno nuevo</li>
+                                                                <li>Vuelve a iniciar sesión</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <table *ngIf="Plans.length > 0" class="min-w-full divide-y divide-gray-200">
+                                                <thead class="bg-gray-50">
+                                                    <tr>
+                                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nombre </th>
+                                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tarifa</th>
+                                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tarifa afiliado extra</th>
+                                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Estado</th>
+
+                                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"></th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="bg-white divide-y divide-gray-200">
+                                                    <tr *ngFor="let p of Plans">
+                                                        <td class="px-6 py-4 whitespace-nowrap">
+                                                            <div class="flex items-center">
+                                                                <div class="ml-4">
+                                                                    <div class="text-sm font-medium text-gray-900">{{p.name}} </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                            <div class="text-sm text-gray-500">{{p.affiliate_fee | currency}} </div>
+                                                        </td>
+
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                            <div class="text-sm text-gray-500">{{p.extra_affiliate_fee | currency}} </div>
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap v ">
+                                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800" *ngIf="p.is_active === true"> Activo </span>
+                                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800" *ngIf="p.is_active === false"> Inactivo </span>
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                                            <div class="flex flex-wrap">
+                                                                <a [routerLink]="['/Dashboard/config/EditPlans', p.id, 'edit']" data-bs-toggle="tooltip" title="Editar plan" class="text-green-600 hover:text-green-900">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 lg:mx-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                                                    </svg>
+                                                                </a>
+                                                                <a (click)="DuplicatePlan(p.id)"  data-bs-toggle="tooltip" title="Duplicar plan"  class=" transition duration-50 ease-in-out text-blue-600 hover:text-blue-900 cursor-pointer">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 lg:mx-1">
+                                                                      <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 011.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 00-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 01-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5a3.375 3.375 0 00-3.375-3.375H9.75" />
+                                                                    </svg>
+                                                                </a>
+                                                                <a (click)="BlockPLan(p.id)" data-bs-toggle="tooltip" title="Deshabilitar plan" *ngIf="p.is_active === true" class="text-red-600 hover:text-red-900">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 lg:mx-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                                                    </svg>
+                                                                </a>
+                                                                <a (click)="UnBlockPLan(p.id)" data-bs-toggle="tooltip" title="Habilitar plan" *ngIf="p.is_active === false" class="text-red-600 hover:text-red-900">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 lg:mx-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" />
+                                                                  </svg>
+                                                                </a>
+                                                                <a (click)="DeletePlan(p.id)" data-bs-toggle="tooltip" title="Eliminar plan" class="text-red-600 hover:text-red-900">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 lg:mx-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                                </svg>
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <!-- More plans... -->
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tabs-config-new-plan" role="tabpanel" aria-labelledby="tabs-config-new-plan">
+                            <div class="flex flex-col">
+
+                                <div class="shadow overflow-hidden sm:rounded-md">
+                                    <div class="px-4 py-5 bg-white sm:p-6">
+                                        <div class="grid grid-cols-6 gap-6">
+                                            <div class="col-span-6 sm:col-span-6">
+                                                <label for="name" class="block text-sm font-medium text-gray-700">Nombre</label>
+                                                <input type="text" [(ngModel)]="p_name" name="name" id="name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                            </div>
+                                            <div class="col-span-6">
+                                                <label for="p_description" class="block text-sm font-medium text-gray-700">Descripción</label>
+                                                <input type="text" [(ngModel)]="p_description" name="p_description" id="p_description" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                            </div>
+
+                                            <div class="col-span-6 sm:col-span-6 lg:col-span-3">
+                                                <label for="affiliate_number" class="block text-sm font-medium text-gray-700">No. máximo de afiliados </label>
+                                                <input type="number" min="0" name="affiliate_number" [(ngModel)]="max_affiliates" id="affiliate_number" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                            </div>
+
+                                            <div class="col-span-6 sm:col-span-6 lg:col-span-3">
+                                                <label for="p_fee" class="block text-sm font-medium text-gray-700">Tarifa por afiliado</label>
+                                                <input type="number" [(ngModel)]="affiliate_fee" name="p_fee" id="p_fee" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                            </div>
+                                            <div class="col-span-6 sm:col-span-6 lg:col-span-3">
+                                                <label for="affiliate_number" class="block text-sm font-medium text-gray-700">No. máximo de afiliados extras </label>
+                                                <input type="number" min="0" name="affiliate_number" [(ngModel)]="max_extra_affiliates" id="affiliate_number" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                            </div>
+
+                                            <div class="col-span-6 sm:col-span-6 lg:col-span-3">
+                                                <label for="p_fee" class="block text-sm font-medium text-gray-700">Tarifa por afiliado extra</label>
+                                                <input type="number" [(ngModel)]="extra_affiliate_fee" name="p_fee" id="p_fee" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+                                        <button type="button" (click)="NewPlan()" [disabled]="p_name.length === 0 || p_description.length === 0 || affiliate_fee < 1 || max_affiliates < 1 " class="inline-flex disabled:opacity-40 justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                               Guardar
+                                            </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Required popper.js to TOOLTIP -->
+<script src="https://unpkg.com/@popperjs/core@2.9.1/dist/umd/popper.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+  var tooltipTriggerList = [].slice.call(
+    document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  );
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new Tooltip(tooltipTriggerEl);
+  });
+</script>

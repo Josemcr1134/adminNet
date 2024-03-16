@@ -1,0 +1,175 @@
+<div class="mt-8">
+    <div class="max-w-6xl mx-auto sm:px-6 ">
+
+        <div class="container px-4 mx-auto sm:px-6 lg:px-8">
+            <div class="inline-flex" style="color: #6F6F6F;">
+                <h2 class="mb-4 text-xl font-semibold">Configuraciones - Servicios</h2>
+            </div>
+
+
+            <div class="flex w-full">
+                <div class="block w-full p-6 bg-white rounded-lg shadow-lg ">
+                    <ul class="flex flex-col flex-wrap pl-0 mb-4 list-none border-b-0  nav nav-tabs nav-justified md:flex-row" id="tabs-tabJustify" role="tablist">
+
+                        <li class="flex-grow text-center nav-item" role="presentation">
+                            <a href="#tabs-config-plans" class=" tab-item active show" data-bs-toggle="pill" data-bs-target="#tabs-config-plans" role="tab" aria-controls="tabs-config-plans" aria-selected="false">Listado</a>
+                        </li>
+                        <li class="flex-grow text-center nav-item" role="presentation">
+                            <a href="#tabs-config-new-plan" class="tab-item" id="tabs-profile-tabJustify" data-bs-toggle="pill" data-bs-target="#tabs-config-new-plan" role="tab" aria-selected="false">Nuevo Servicio</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="tabs-tabContentJustify">
+                        <div class="tab-pane fade show active" id="tabs-config-plans" role="tabpanel" aria-labelledby="tabs-config-plans">
+                          <div class="w-full  mb-3 mt-4 flex justify-end ">
+                            <label for="search" class="sr-only">Buscar...</label>
+                            <div class="relative">
+                                <div class="pointer-events-none absolute inset-y-0 left-0 pl-3 flex items-center">
+                                    <!-- Heroicon name: solid/search -->
+                                    <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <input (keyup)="GetGeneralServices()" [(ngModel)]="searchTerm" id="search" name="search" class="block w-full bg-white border border-gray-300 rounded-md py-2 pl-10 pr-3 text-sm placeholder-gray-500 focus:outline-none focus:text-gray-900 focus:placeholder-gray-400 focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                    placeholder="Buscar...." type="search">
+                            </div>
+                        </div>
+                            <div class="flex flex-col">
+                                <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                    <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+                                        <div class="overflow-x-auto border-b border-gray-200 shadow sm:rounded-lg">
+                                            <div class="p-4 rounded-md bg-red-50" *ngIf="General_Services.length === 0">
+                                                <div class="flex">
+                                                    <div class="flex-shrink-0">
+                                                        <!-- Heroicon name: solid/x-circle -->
+                                                        <svg class="w-5 h-5 text-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                                                  </svg>
+                                                    </div>
+                                                    <div class="ml-3">
+                                                        <h3 class="text-sm font-medium text-red-800">No hay servicios disponibles</h3>
+                                                        <div class="mt-2 text-sm text-red-700">
+                                                            <ul role="list" class="pl-5 space-y-1 list-disc">
+                                                                <li>Crea uno nuevo</li>
+                                                                <li>Vuelve a iniciar sesión</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <table class="min-w-full divide-y divide-gray-200" *ngIf="General_Services.length > 0">
+                                                <thead class="bg-gray-50">
+                                                    <tr>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Nombre </th>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Tarifa</th>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Estado</th>
+
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"></th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="bg-white divide-y divide-gray-200">
+                                                    <tr *ngFor="let ms of General_Services">
+                                                        <td class="px-6 py-4 whitespace-nowrap">
+                                                            <div class="flex items-center">
+                                                                <div class="ml-4">
+                                                                    <div class="text-sm font-medium text-gray-900">{{ms.name}}</div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+
+                                                        <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                                            <div class="text-sm text-gray-500">{{ms.fee | currency }} </div>
+                                                        </td>
+
+                                                        <td class="px-6 py-4 whitespace-nowrap ">
+                                                            <span class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full" *ngIf="ms.is_active === true"> Activo </span>
+                                                            <span class="inline-flex px-2 text-xs font-semibold leading-5 text-red-800 bg-red-100 rounded-full" *ngIf="ms.is_active === false"> Inactivo </span>
+                                                        </td>
+                                                        <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
+                                                            <div class="flex flex-wrap">
+                                                                <a [routerLink]="['/Dashboard/config/EditService', ms.id ]" data-bs-toggle="tooltip" title="Editar servicio" class="text-green-600 hover:text-green-900">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 lg:mx-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                                                    </svg>
+                                                                </a>
+                                                                <a (click)="BlockGeneralService(ms.id)" *ngIf="ms.is_active === true" data-bs-toggle="tooltip" title="Deshabilitar servicio" class="text-red-600 cursor-pointer hover:text-red-900">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 lg:mx-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                                                    </svg>
+                                                                </a>
+                                                                <a (click)="UnBlockGeneralService(ms.id)" *ngIf="ms.is_active === false" data-bs-toggle="tooltip" title="Habilitar servicio" class="text-red-600 hover:text-red-900">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 lg:mx-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                                      <path stroke-linecap="round" stroke-linejoin="round" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" />
+                                                                    </svg>
+                                                                </a>
+                                                                <a (click)="DeleteGeneralService(ms.id)" data-bs-toggle="tooltip" title="Eliminar servicio" class="text-red-600 hover:text-red-900">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 lg:mx-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                                      <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                                    </svg>
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <!-- More General Services... -->
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tabs-config-new-plan" role="tabpanel" aria-labelledby="tabs-config-new-plan">
+                            <div class="flex flex-col">
+
+                                <div class="overflow-hidden shadow sm:rounded-md">
+                                    <div class="px-4 py-5 bg-white sm:p-6">
+                                        <div class="grid grid-cols-6 gap-6">
+                                            <div class="col-span-6 sm:col-span-6">
+                                                <label for="first-name" class="block text-sm font-medium text-gray-700">Nombre</label>
+                                                <input type="text" [(ngModel)]="s_name" name="first-name" id="first-name" autocomplete="given-name" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                            </div>
+                                            <div class="col-span-6">
+                                                <label for="fee" class="block text-sm font-medium text-gray-700">Tarifa</label>
+                                                <input type="number" [(ngModel)]="s_fee" name="fee" id="fee" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                            </div>
+                                            <div class="col-span-6 sm:col-span-6 lg:col-span-6">
+                                                <label for="description" class="block text-sm font-medium text-gray-700">Descripción</label>
+                                                <div class="mt-1">
+                                                    <textarea id="description" [(ngModel)]="s_desc" name="description" rows="3" class="block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Descripción del servicio"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-span-6 sm:col-span-6">
+                                                <label for="plan" class="block text-sm font-medium text-gray-700">Plan</label>
+                                                <select [(ngModel)]="p_id" id="plan" name="plan" autocomplete="plan-name" class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                                    <option disabled>Selecciona un plan</option>
+                                                    <option [value]="p.id" *ngFor="let p of Plans" >{{p.name}} </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="px-4 py-3 text-right bg-gray-50 sm:px-6">
+                                        <button type="button" (click)="NewService()" class="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                            Guardar
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Required popper.js to TOOLTIP -->
+<script src="https://unpkg.com/@popperjs/core@2.9.1/dist/umd/popper.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+  var tooltipTriggerList = [].slice.call(
+    document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  );
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new Tooltip(tooltipTriggerEl);
+  });
+</script>

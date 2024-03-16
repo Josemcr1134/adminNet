@@ -1,0 +1,142 @@
+<div class="mt-8">
+    <div class="max-w-7xl mx-auto  sm:px-6 ">
+
+        <div class="mt-10 sm:mt-0">
+            <div class="md:grid md:grid-cols-3 md:gap-6">
+                <div class="md:col-span-1">
+                    <div class="px-4 sm:px-0">
+
+                        <h2 class="text-xl font-semibold leading-6 " style="color: #6F6F6F;">Nuevo Aliado</h2>
+                        <p class="mt-1 text-sm text-gray-600">Completa los campos para realizar el pre-registro de un nuevo especialista</p>
+                    </div>
+                </div>
+                <div class="mt-5 md:mt-0 md:col-span-2">
+                    <div class="shadow overflow-hidden sm:rounded-md">
+                        <div class="px-4 py-5 bg-white sm:p-6">
+                            <div class="grid grid-cols-6 gap-6">
+                                <div class="col-span-6 sm:col-span-6">
+                                    <label for="country" class="block text-sm font-medium text-gray-700">Tipo de persona*</label>
+                                    <select [(ngModel)]="person_type" name="person_type" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                    <option value=1>Natural</option>
+                                    <option value=2>Jurídica</option>
+                                </select>
+                                </div>
+                                <div class="col-span-6 sm:col-span-3" *ngIf="person_type == 1">
+                                    <label for="first-name" class="block text-sm font-medium text-gray-700">Nombres*</label>
+                                    <input type="text" [(ngModel)]="first_name" name="first-name" id="first-name" autocomplete="offf" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                </div>
+                                <div class="col-span-6 sm:col-span-3" *ngIf="person_type == 2">
+                                    <label for="first-name" class="block text-sm font-medium text-gray-700">Nombre completo (Representante legal)*</label>
+                                    <input type="text" name="first-name" id="first-name" autocomplete="offf" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                </div>
+
+                                <div class="col-span-6 sm:col-span-3" *ngIf="person_type == 1">
+                                    <label for="last-name" class="block text-sm font-medium text-gray-700">Apellidos*</label>
+                                    <input type="text" [(ngModel)]="last_name" name="last-name" id="last-name" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                </div>
+
+                                <div class="col-span-6 sm:col-span-3">
+                                    <label for="email-address" class="block text-sm font-medium text-gray-700">Correo electronico*</label>
+                                    <input type="email" name="email-address" [(ngModel)]="email" id="email-address" (keyup)="validateEmail()" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    <small class="text-red-600" *ngIf="emailStatus ===  false ">Este email no es válido </small>
+
+                                </div>
+
+
+                                <div class="col-span-6 sm:col-span-3">
+                                    <label for="country" class="block text-sm font-medium text-gray-700">Telefono*</label>
+                                    <input type="number" name="first-name" [(ngModel)]="phone_number" id="first-name" autocomplete="offf" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    <small class="text-red-600" *ngIf="this.phone_number.toString().length > 10">Este número no es válido</small>
+
+                                </div>
+                                <div class="col-span-6 sm:col-span-3 ">
+                                    <label class="block text-sm font-medium text-gray-700">Tipo de identificación <span *ngIf="person_type == 2">(Representante legal)</span>*</label>
+                                    <select [(ngModel)]="document_type" name="id_type" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                            <option *ngFor="let d of doc_types" [value]="d.id" >{{d.name}}</option>
+                                        </select>
+                                </div>
+                                <div class="col-span-6 sm:col-span-3  ">
+                                    <label for="id" class="block text-sm font-medium text-gray-700">Numero de identificacion <span *ngIf="person_type == 2">(Representante legal)</span>*</label>
+                                    <input type="number" name="id" id="id" [(ngModel)]="document" autocomplete="address-level2" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                </div>
+                                <div class="col-span-6 sm:col-span-3" *ngIf="person_type == 1">
+                                    <label for="gender" class="block text-sm font-medium text-gray-700">Género*</label>
+                                    <select [(ngModel)]="gender" name="id_type" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                    <option *ngFor="let g of genders" [value]="g.id" >{{g.name}}</option>
+                                </select>
+                                </div>
+                                <div class="col-span-6 sm:col-span-3 " *ngIf="person_type == 2">
+                                    <label for="region" class="block text-sm font-medium text-gray-700">Razon Social*</label>
+                                    <input type="text" name="region" id="region" [(ngModel)]="company_name" [disabled]="ID_type === 'NIT'" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                </div>
+                                <div class="col-span-6 sm:col-span-3 " *ngIf="person_type == 2">
+                                    <label for="NIT" class="block text-sm font-medium text-gray-700">NIT*</label>
+                                    <input type="number" name="NIT" id="NIT" [(ngModel)]="nit" [disabled]="ID_type === 'NIT'" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                </div>
+                                <div class="col-span-6 sm:col-span-3">
+                                    <label for="Enabling-code" class="block text-sm font-medium text-gray-700">Código de habilitación*</label>
+                                    <input type="text" name="Enabling-code" id="Enabling-code" [(ngModel)]="enable_code" autocomplete="off" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                </div>
+                                <div class="col-span-6 sm:col-span-3 ">
+                                    <label for="address-user" class="block text-sm font-medium text-gray-700">Dirección de residencia*</label>
+                                    <input type="text" name="address-user" [(ngModel)]="address" id="address-user" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                </div>
+
+                                <div class="col-span-6 sm:col-span-3 ">
+                                    <label for="address-details-user" class="block text-sm font-medium text-gray-700">Detalles de la dirección*</label>
+                                    <input type="text" name="address-details-user" [(ngModel)]="address_detail" id="address-details-user" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                </div>
+                                <div class="col-span-6 sm:col-span-3 ">
+                                    <label for="country" class="block text-sm font-medium text-gray-700">País*</label>
+                                    <select id="country" [(ngModel)]="country" name="country" (change)="GetDpt(country)" class="disabled:bg-gray-100 disabled:cursor-not-allowed mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                                        <option *ngFor="let c of Countries" [value]="c.id"  >{{c.name}} </option>
+                                      </select>
+                                </div>
+
+                                <div class="col-span-6 sm:col-span-3 ">
+                                    <label for="department" class="block text-sm font-medium text-gray-700">Departamento*</label>
+                                    <select id="department" [(ngModel)]="dpt" [disabled]="Dpts.length === 0" (change)="GetMunicipality(dpt)" name="department" class="disabled:bg-gray-100 disabled:cursor-not-allowed mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                                        <option *ngFor="let d of Dpts" [value]="d.id"  >{{d.name}} </option>
+                                      </select>
+                                </div>
+
+                                <div class="col-span-6 sm:col-span-3 ">
+                                    <label for="municipality" class="block text-sm font-medium text-gray-700">Ciudad / Municipio*</label>
+                                    <select id="municipality" [(ngModel)]="municipality" [disabled]="Municipalities.length === 0" name="municipality" (change)="GetNeighborhood(municipality)" class="disabled:bg-gray-100 disabled:cursor-not-allowed mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                                        <option *ngFor="let m of Municipalities" [value]="m.id"  >{{m.name}} </option>
+                                      </select>
+                                </div>
+
+                                <div class="col-span-6 sm:col-span-3 ">
+                                    <label for="neighborhood" class="block text-sm font-medium text-gray-700">Barrio*</label>
+                                    <select id="neighborhood" [(ngModel)]="neighborhood" [disabled]="Neighborhoods.length === 0" name="neighborhood" class="disabled:bg-gray-100 disabled:cursor-not-allowed mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                                        <option *ngFor="let n of Neighborhoods" [value]="n.id">{{n.name}} </option>
+                                      </select>
+                                </div>
+
+                                <div class="col-span-6  ">
+                                    <label for="platformService" class="block text-sm font-medium text-gray-700">Licencia de servicios*</label>
+                                    <select id="platformService" [(ngModel)]="platformService" [disabled]="PlatformServices.length === 0" name="platformService" class="disabled:bg-gray-100 disabled:cursor-not-allowed mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                                        <option *ngFor="let n of PlatformServices" [value]="n.id">{{n.name}} </option>
+                                      </select>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+                            <button type="button" (click)="NewNaturalSpecialist()" *ngIf="person_type == 1" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Guardar</button>
+                            <button type="button" (click)="NewLegalStaff()"  *ngIf="person_type == 2" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hidden sm:block" aria-hidden="true">
+            <div class="py-5">
+                <div class="border-t border-gray-200"></div>
+            </div>
+        </div>
+    </div>
+</div>

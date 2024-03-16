@@ -1,0 +1,186 @@
+<div class="mt-8">
+    <div class="max-w-6xl mx-auto  sm:px-6 ">
+
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="inline-flex" style="color: #6F6F6F;">
+                <svg xmlns="http://www.w3.org/2000/svg" [routerLink]="['/Dashboard/allies/AlliesList']" class="h-6 w-6 mx-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="cursor: pointer;">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12" />
+                </svg>
+                <h2 class="text-xl  mb-4 font-semibold">Documentos cargados - Aliados</h2>
+            </div>
+            <div class="inline-flex" style="color: #6F6F6F;">
+            </div>
+
+            <div class="mt-5 md:mt-0 md:col-span-2">
+
+                <div class="shadow overflow-hidden sm:rounded-md">
+                    <div class="px-4 py-5 bg-white sm:p-6">
+                        <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2">
+                            <li class="col-span-1 bg-gray-100 rounded-lg shadow divide-y divide-gray-200">
+                                <div class="w-full flex items-center justify-between p-6 space-x-6">
+                                    <div class="flex-1 truncate">
+                                        <div class="flex items-center space-x-3">
+                                            <h3 class="text-gray-900 text-sm font-medium truncate">{{name}}</h3>
+                                            <span class="flex-shrink-0 inline-block px-2 py-0.5 text-green-800 text-xs font-medi text-centerum bg-green-100 rounded-full">Aliado - Documentos Cargados</span>
+                                        </div>
+                                        <p class="mt-1 text-gray-500 text-sm truncate text-center">RUT</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="-mt-px flex divide-x divide-gray-200">
+                                        <div class="w-0 flex-1 flex">
+                                            <a [href]="rut" target="_blank" download="rut" class="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-gray-500">
+                                                <!-- Heroicon name: solid/mail -->
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                   <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                </svg>
+
+                                                <span class="ml-3">Visualizar</span>
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="col-span-1 bg-gray-100 rounded-lg shadow divide-y divide-gray-200">
+                                <div class="w-full flex items-center justify-between p-6 space-x-6">
+                                    <div class="flex-1 truncate">
+                                        <div class="flex items-center space-x-3">
+                                            <h3 class="text-gray-900 text-sm font-medium truncate">{{name}} </h3>
+                                            <span class="flex-shrink-0 inline-block px-2 py-0.5 text-green-800 text-xs font-medium bg-green-100 rounded-full text-center">Aliado - Documentos Cargados</span>
+                                        </div>
+                                        <p class="mt-1 text-gray-500 text-sm truncate text-center">Camara de Comercio</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="-mt-px flex divide-x divide-gray-200">
+                                        <div class="w-0 flex-1 flex">
+                                            <a [href]='chamber_of_comerce' target="_blank"  class="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-gray-500">
+                                                <!-- Heroicon name: solid/mail -->
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                   <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                </svg>
+
+                                                <span class="ml-3">Visualizar</span>
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="col-span-1 bg-gray-100 rounded-lg shadow divide-y divide-gray-200">
+                                <div class="w-full flex items-center justify-between p-6 space-x-6">
+                                    <div class="flex-1 truncate">
+                                        <div class="flex items-center space-x-3">
+                                            <h3 class="text-gray-900 text-sm font-medium truncate"> {{name}} </h3>
+                                            <span class="flex-shrink-0 inline-block px-2 py-0.5 text-green-800 text-xs font-medium bg-green-100 rounded-full text-center">Aliado - Documentos Cargados</span>
+                                        </div>
+                                        <p class="mt-1 text-gray-500 text-sm truncate text-center">Documento de Identificación</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="-mt-px flex divide-x divide-gray-200">
+                                        <div class="w-0 flex-1 flex">
+                                            <a [href]='document' target="_blank"   class="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-gray-500">
+                                                <!-- Heroicon name: solid/mail -->
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                   <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                </svg>
+
+                                                <span class="ml-3">Visualizar</span>
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="col-span-1 bg-gray-100 rounded-lg shadow divide-y divide-gray-200">
+                                <div class="w-full flex items-center justify-between p-6 space-x-6">
+                                    <div class="flex-1 truncate">
+                                        <div class="flex items-center space-x-3 text-center">
+                                            <h3 class="text-gray-900 text-sm font-medium truncate">{{name}} </h3>
+                                            <span class="flex-shrink-0 inline-block px-2 py-0.5 text-green-800 text-xs font-medium bg-green-100 rounded-full ">Aliado - Documentos Cargados</span>
+                                        </div>
+                                        <p class="mt-1 text-gray-500 text-sm truncate text-center">Logo</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="-mt-px flex divide-x divide-gray-200">
+                                        <div class="w-0 flex-1 flex">
+                                            <a [href]='logo' target="_blank"  class="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-gray-500">
+                                                <!-- Heroicon name: solid/mail -->
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                      </svg>
+
+                                                <span class="ml-3">Visualizar</span>
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="col-span-1 bg-gray-100 rounded-lg shadow divide-y divide-gray-200">
+                                <div class="w-full flex items-center justify-between p-6 space-x-6">
+                                    <div class="flex-1 truncate">
+                                        <div class="flex items-center space-x-3 text-center">
+                                            <h3 class="text-gray-900 text-sm font-medium truncate">{{name}} </h3>
+                                            <span class="flex-shrink-0 inline-block px-2 py-0.5 text-green-800 text-xs font-medium bg-green-100 rounded-full ">Aliado - Documentos Cargados</span>
+                                        </div>
+                                        <p class="mt-1 text-gray-500 text-sm truncate text-center">Firma</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="-mt-px flex divide-x divide-gray-200">
+                                        <div class="w-0 flex-1 flex">
+                                            <a [href]='signature_image' target="_blank" class="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-gray-500">
+                                                <!-- Heroicon name: solid/mail -->
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                      </svg>
+
+                                                <span class="ml-3">Visualizar</span>
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="col-span-2">
+                                <div>
+                                    <label for="comment" class="block text-sm font-medium text-gray-700">Agrega un comentario</label>
+                                    <div class="mt-1">
+                                        <textarea rows="4" [(ngModel)]="reason" name="comment" id="comment" class="block w-full rounded-md border-purple-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"></textarea>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="pt-5">
+                            <div class="flex justify-center">
+                                <button type="button" (click)="updateAllie('disabled')" class=" py-2 px-4 border border-gray-300 rounded-md bg-red-500 shadow-sm text-sm font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                    Rechazar
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-flex" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                    </svg>
+                                </button>
+                                <button type="submit" (click)="updateAllie('enabled')" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-500 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Aprobar
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

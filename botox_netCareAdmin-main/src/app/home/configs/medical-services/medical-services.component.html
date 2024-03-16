@@ -1,0 +1,208 @@
+<div class="mt-8">
+    <div class="max-w-6xl mx-auto sm:px-6 ">
+        <div class="container px-4 mx-auto sm:px-6 lg:px-8">
+            <div class="inline-flex" style="color: #6F6F6F;">
+                <h2 class="mb-4 text-xl font-semibold">Configuraciones - Servicios médicos</h2>
+            </div>
+            <div class="flex w-full">
+                <div class="block w-full p-6 bg-white rounded-lg shadow-lg ">
+                    <ul class="flex flex-col flex-wrap pl-0 mb-4 list-none border-b-0 nav nav-tabs nav-justified md:flex-row" id="tabs-tabJustify" role="tablist">
+                        <li class="flex-grow text-center nav-item" role="presentation">
+                            <a href="#tabs-config-plans" class=" tab-item active show" data-bs-toggle="pill" data-bs-target="#tabs-config-plans" role="tab" aria-controls="tabs-config-plans" aria-selected="false">Listado</a>
+                        </li>
+                        <li class="flex-grow text-center nav-item" role="presentation">
+                            <a href="#tabs-config-new-plan" class="tab-item" id="tabs-profile-tabJustify" data-bs-toggle="pill" data-bs-target="#tabs-config-new-plan" role="tab" aria-selected="false">Nuevo Servicio M.</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="tabs-tabContentJustify">
+                        <div class="tab-pane fade show active" id="tabs-config-plans" role="tabpanel" aria-labelledby="tabs-config-plans">
+                            <div class="w-full  mb-3 mt-4 flex justify-end ">
+                              <label for="search" class="sr-only">Buscar...</label>
+                              <div class="relative">
+                                  <div class="pointer-events-none absolute inset-y-0 left-0 pl-3 flex items-center">
+                                      <!-- Heroicon name: solid/search -->
+                                      <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                          <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                                      </svg>
+                                  </div>
+                                  <input (keyup)="GetMedicalServices()" [(ngModel)]="searchTerm" id="search" name="search" class="block w-full bg-white border border-gray-300 rounded-md py-2 pl-10 pr-3 text-sm placeholder-gray-500 focus:outline-none focus:text-gray-900 focus:placeholder-gray-400 focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                      placeholder="Buscar...." type="search">
+                              </div>
+                            </div>
+                            <div class="flex flex-col">
+                                <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                    <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+                                        <div class="overflow-x-auto border-b border-gray-200 shadow sm:rounded-lg">
+                                            <div class="p-4 rounded-md bg-red-50" *ngIf="!medicalServices.length">
+                                                <div class="flex">
+                                                    <div class="flex-shrink-0">
+                                                        <!-- Heroicon name: solid/x-circle -->
+                                                        <svg class="w-5 h-5 text-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                                                        </svg>
+                                                    </div>
+                                                    <div class="ml-3">
+                                                        <h3 class="text-sm font-medium text-red-800">No hay servicios médicos disponibles</h3>
+                                                        <div class="mt-2 text-sm text-red-700">
+                                                            <ul role="list" class="pl-5 space-y-1 list-disc">
+                                                                <li>Crea uno nuevo</li>
+                                                                <li>Vuelve a iniciar sesión</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <table class="min-w-full divide-y divide-gray-200" *ngIf="medicalServices.length">
+                                                <thead class="bg-gray-50">
+                                                    <tr>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Imagen</th>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Tipo</th>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Servicio</th>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Estado</th>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"></th>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"></th>
+                                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="bg-white divide-y divide-gray-200">
+                                                    <tr *ngFor="let s of medicalServices">
+                                                        <td class="px-6 py-4 text-sm  whitespace-nowrap">
+                                                            <img [src]="s.image" alt="sin imagen" class="w-14 h-14 rounded-full">
+                                                        </td>
+                                                        <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">{{s.name}}</td>
+                                                        <td class="px-6 py-4 text-sm font-medium text-gray-900 whitespace-nowrap">{{s.description}}</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap ">
+                                                            <span class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full" *ngIf="s.is_active === true"> Activo </span>
+                                                            <span class="inline-flex px-2 text-xs font-semibold leading-5 text-red-800 bg-red-100 rounded-full" *ngIf="s.is_active === false"> Inactivo </span>
+                                                        </td>
+                                                        <td class="px-6 py-4 ">
+                                                            <a [routerLink]="['/Dashboard/config/MedicalService', s.id]" data-bs-toggle="tooltip" title="Detalle del servicio médico">
+                                                              <svg xmlns="http://www.w3.org/2000/svg"  class="w-6 h-6 cursor-pointer text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                                              </svg>
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                          <a data-bs-toggle="tooltip" title="Eliminar  servicio médico">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" (click)="DeleteMedicalService(s.id)" class="w-6 h-6 text-red-500 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                              <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                            </svg>
+                                                          </a>
+                                                        </td>
+                                                        <td>
+                                                          <a (click)="EnableMedicalService(s.id)"  data-bs-toggle="tooltip" title="Habilitar servicio médico">
+                                                            <svg xmlns="http://www.w3.org/2000/svg"  class="w-6 h-6 text-red-500 cursor-pointer" *ngIf="s.is_active === false" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                              <path stroke-linecap="round" stroke-linejoin="round" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" />
+                                                            </svg>
+                                                          </a>
+                                                          <a (click)="DisableMedicalService(s.id)" data-bs-toggle="tooltip" title="Deshabilitar servicio médico" >
+                                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-red-500 cursor-pointer" *ngIf="s.is_active === true" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                              <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                                            </svg>
+                                                          </a>
+                                                        </td>
+                                                    </tr>
+                                                    <!-- More services... -->
+                                                </tbody>
+                                            </table>
+                                            <!-- Pagination -->
+                                            <nav class="flex items-center justify-between px-4 py-3 bg-white border-t border-gray-200 sm:px-6" aria-label="Pagination">
+                                                <div class="hidden sm:block">
+                                                    <p class="text-sm text-gray-700">
+                                                        Mostrando
+                                                        <span class="font-medium">{{this.offset + 1}}</span> a
+                                                        <span class="font-medium">{{this.limit * this.page}}</span> de
+                                                        <span class="font-medium">{{this.count}}</span> resultados
+                                                    </p>
+                                                </div>
+                                                <div class="flex justify-between flex-1 sm:justify-end">
+                                                    <button [disabled]="previous === null" (click)="Pagination(-1)" class="disabled:opacity-60 disabled:cursor-not-allowed relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md cursor-pointer hover:bg-gray-50">
+                                                        Anterior </button>
+                                                    <button [disabled]="next === null" (click)="Pagination(1)" class="disabled:opacity-60 disabled:cursor-not-allowed relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md cursor-pointer hover:bg-gray-50">
+                                                        Siguiente </button>
+                                                </div>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tabs-config-new-plan" role="tabpanel" aria-labelledby="tabs-config-new-plan">
+                            <div class="flex flex-col">
+                                <div class="overflow-hidden shadow sm:rounded-md">
+                                    <div class="px-4 py-5 bg-gray-50 sm:p-6">
+                                        <div class="grid grid-cols-6 gap-6">
+                                            <div class="col-span-6 mt-3 sm:col-span-3">
+                                                <label for="service_title" class="block text-sm font-medium text-gray-700">Título</label>
+                                                <div class="mt-1">
+                                                    <input [disabled]="loading === true" type="text" [(ngModel)]="service_title" name="service_title" id="service_title" class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-purple-500 focus:border-purple-500 sm:text-sm">
+                                                </div>
+                                            </div>
+                                            <div class="col-span-6 mt-3 sm:col-span-3">
+                                                <label for="service_description" class="block text-sm font-medium text-gray-700">Descripción</label>
+                                                <div class="mt-1">
+                                                    <input [disabled]="loading === true" type="text" [(ngModel)]="service_description" name="service_description" id="service_description" class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-purple-500 focus:border-purple-500 sm:text-sm">
+                                                </div>
+                                            </div>
+                                            <div class="col-span-6 mt-3 sm:col-span-3">
+                                                <label for="fee" class="block text-sm font-medium text-gray-700">Tarifa</label>
+                                                <div class="mt-1">
+                                                    <input [disabled]="loading === true" type="number" name="fee" [(ngModel)]="m_fee" id="fee" class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-purple-500 focus:border-purple-500 sm:text-sm">
+                                                </div>
+                                                <p class="mt-2 text-sm text-gray-500" id="email-description">Precio sugerido para el servicio.</p>
+                                            </div>
+                                            <div class="col-span-6 mt-3 sm:col-span-3">
+                                                <label for="cups_code" class="block text-sm font-medium text-gray-700">Código CUPS</label>
+                                                <div class="mt-1">
+                                                    <input [disabled]="loading === true" type="text" name="cups_code" [(ngModel)]="cups_code" id="cups_code" class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-purple-500 focus:border-purple-500 sm:text-sm">
+                                                </div>
+                                            </div>
+                                            <div class="col-span-6 mt-3 sm:col-span-3">
+                                                <label for="fee" class="block text-sm font-medium text-gray-700">Imagen</label>
+                                                <div class="mt-1">
+                                                    <input [disabled]="loading === true" (change)="onChangeImages($event)" [multiple]="false" class="form-control block w-full  px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out  m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                                        type="file" id="formFile">
+                                                </div>
+                                            </div>
+                                            <div class="col-span-6 mt-3 sm:col-span-3">
+                                                <label for="specialtie" class="block text-sm font-medium text-gray-700">Adjunta una especialidad</label>
+                                                <select id="specialtie" [(ngModel)]="specialtie" name="specialtie" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm rounded-md">
+                                                    <option *ngFor="let s of Specialties" [value]="s.id">{{s.name}} </option>
+                                                </select>
+                                            </div>
+                                            <div class="col-span-6 mt-3 sm:col-span-3">
+                                                <label for="specialtie" class="block text-sm font-medium text-gray-700">Tipo de servicio</label>
+                                                <select id="specialtie" [(ngModel)]="service_type" name="specialtie" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm rounded-md">
+                                                    <option *ngFor="let s of serviceTypes" [value]="s.id">{{s.name}} </option>
+                                                </select>
+                                            </div>
+                                          </div>
+                                        <div class="px-4 py-3 text-right  sm:px-6">
+                                            <button type="button" [disabled]="service_type.length === 0 || cups_code.length === 0 ||service_title.length === 0 || service_description.length === 0  || m_fee === 0  || specialtie.length === 0" (click)="NewMedicalService()" class="disabled:opacity-60 disabled:cursor-not-allowed inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-purple-600 border border-transparent rounded-md shadow-sm hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
+                                                Guardar
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Required popper.js to TOOLTIP -->
+<script src="https://unpkg.com/@popperjs/core@2.9.1/dist/umd/popper.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+  var tooltipTriggerList = [].slice.call(
+    document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  );
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new Tooltip(tooltipTriggerEl);
+  });
+</script>

@@ -1,0 +1,123 @@
+<!-- Page header -->
+<div class="bg-white shadow">
+    <div class="px-4 sm:px-6 lg:max-w-7xl lg:mx-auto lg:px-8">
+        <div class="py-6 md:flex md:items-center md:justify-between lg:border-t lg:border-gray-200">
+            <div class="flex-1 min-w-0">
+                <!-- Profile -->
+                <div class="flex items-center">
+                    <img class="hidden h-16 w-16 rounded-full sm:block" src="assets/images/Perfil2.jpg" alt="">
+                    <div>
+                        <div class="flex items-center">
+                            <img class="h-16 w-16 rounded-full sm:hidden" src="assets/images/Perfil2.jpg" alt="">
+                            <h1 class="ml-3 text-2xl font-bold leading-7 text-gray-900 sm:leading-9 sm:truncate">Buen dia, Administrador </h1>
+                        </div>
+                        <dl class="mt-6 flex flex-col sm:ml-3 sm:mt-1 sm:flex-row sm:flex-wrap">
+                            <dt class="sr-only">Company</dt>
+                            <dd class="flex items-center text-sm text-gray-500 font-medium capitalize sm:mr-6">
+                                <!-- Heroicon name: solid/office-building -->
+                                <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H4a1 1 0 110-2V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" clip-rule="evenodd" />
+                         </svg> Administrador
+                            </dd>
+                            <dt class="sr-only">Account status</dt>
+                            <dd class="mt-3 flex items-center text-sm text-gray-500 font-medium sm:mr-6 sm:mt-0 capitalize">
+                                <!-- Heroicon name: solid/check-circle -->
+                                <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-secondary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                </svg> Cuenta verificada
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="mt-8">
+    <div class="max-w-7xl mx-auto  sm:px-6 ">
+
+        <h2 class="text-xl  mb-4 font-semibold" style="color: #6F6F6F;">Indicadores</h2>
+        <div class="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-8 gap-x-6 gap-y-3 mb-4">
+            <div class="lg:col-span-3 ">
+                <input id="inital-date" [(ngModel)]="start_date" name="inital-date" class="block w-full bg-white border border-gray-300 rounded-md  pl-10 pr-3 text-sm placeholder-gray-500 focus:outline-none focus:text-gray-900 focus:placeholder-gray-400 focus:ring-1  sm:text-sm" placeholder="Buscar..."
+                    type="date">
+            </div>
+            <div class="lg:col-span-3">
+                <input id="final-date" name="final-date" [(ngModel)]="end_date" class="block w-full bg-white border border-gray-300 rounded-md  pl-10 pr-3 text-sm placeholder-gray-500 focus:outline-none focus:text-gray-900 focus:placeholder-gray-400 focus:ring-1  sm:text-sm" placeholder="Buscar..."
+                    type="date">
+            </div>
+            <div class="lg:col-span-1">
+                <button type="button" (click)="GetIndicatorsByIntervallDate()" class="min-w-full inline-flex justify-center rounded-md border border-transparent bg-purple-700 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">
+                    Filtrar
+                </button>
+            </div>
+            <div class="lg:col-span-1">
+                <button type="button" (click)="Reload()" class="min-w-full inline-flex justify-center rounded-md border border-transparent bg-purple-700 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+                  </svg>
+
+                </button>
+            </div>
+        </div>
+        <ul role="list" class="grid grid-cols-1 gap-12 sm:grid-cols-1 lg:grid-cols-2">
+            <li class="col-span-1 bg-white rounded-lg shadow h-100  p-5 ">
+                <div class="flex justify-between items-center mb-6 space-x-3">
+
+                    <dt class="font-semibold  text-gray-900">Ventas totales</dt>
+                    <a [routerLink]="['/Dashboard/statistics/Indicators' , 5 ,'MoreInfo', 1]" routerLinkActive="router-link-active" class="mt-1  text-secondary justify-end text-sm truncate">Ver informe</a>
+                </div>
+                <h1 class="text-2xl font-semibold  text-primary mb-2">{{total_services_paid| currency}} - {{total_services}}</h1>
+                <div class="w-auto h-auto bg-cover rounded-l-lg ">
+                  <ngx-charts-line-chart
+
+                  [scheme]="colorScheme"
+                  [legend]="legend"
+                  [showXAxisLabel]="showXAxisLabel"
+                  [showYAxisLabel]="showYAxisLabel"
+                  [xAxis]="xAxis"
+                  [yAxis]="yAxis"
+                  [xAxisLabel]="xAxisLabel"
+                  [yAxisLabel]="yAxisLabel"
+                  [timeline]="timeline"
+                  [results]="multi"
+
+                  >
+                </ngx-charts-line-chart>
+                </div>
+            </li>
+            <li class="col-span-1 bg-white rounded-lg shadow   p-5 ">
+                <div class="flex justify-between items-center mb-6 space-x-3">
+
+                    <dt class="font-semibold  text-gray-900">Afiliaciones totales</dt>
+                    <a [routerLink]="['/Dashboard/statistics/Indicators' , 5 ,'MoreInfo', 2]" routerLinkActive="router-link-active" class="mt-1  text-secondary justify-end text-sm truncate">Ver informe</a>
+                </div>
+                <h1 class="text-2xl font-semibold text-primary">{{total_memberships_paid| currency}} - {{total_memberships}}</h1>
+                <div class="w-auto h-auto bg-cover rounded-l-lg ">
+                  <ngx-charts-line-chart
+
+                    [scheme]="colorScheme"
+                    [legend]="legend"
+                    [showXAxisLabel]="showXAxisLabel"
+                    [showYAxisLabel]="showYAxisLabel"
+                    [xAxis]="xAxis"
+                    [yAxis]="yAxis"
+                    [xAxisLabel]="xAxisLabel"
+                    [yAxisLabel]="yAxisLabel"
+                    [timeline]="timeline"
+                    [results]="multiAfiliations"
+
+                    >
+                  </ngx-charts-line-chart>
+                </div>
+            </li>
+
+
+
+
+            <!-- More people... -->
+        </ul>
+    </div>
+</div>

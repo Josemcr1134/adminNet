@@ -1,0 +1,126 @@
+<div class="mt-8">
+    <div class="max-w-6xl mx-auto sm:px-6 ">
+
+        <div class="mt-10 sm:mt-0">
+            <div class="md:grid md:grid-cols-3 md:gap-6">
+                <div class="md:col-span-1">
+                    <div class="px-4 sm:px-0">
+
+                        <h2 class="text-xl font-semibold leading-6 " style="color: #6F6F6F;">Nuevo asesor</h2>
+                        <p class="mt-1 text-sm text-gray-600">Completa los campos para realizar el registro de un nuevo aliado</p>
+                    </div>
+                </div>
+                <div class="mt-5 md:mt-0 md:col-span-2">
+
+                    <div class="overflow-hidden shadow sm:rounded-md">
+                        <div class="px-4 py-5 bg-white sm:p-6">
+                            <div class="grid grid-cols-6 gap-6">
+                                <div class="col-span-6 sm:col-span-3">
+                                    <label for="fist_name" class="block text-sm font-medium text-gray-700">Nombre(s)*</label>
+                                    <input type="text" name="fist_name" [(ngModel)]="first_name" id="fist_name" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                    <!-- <small class="text-red-500 animate-bounce" *ngIf="names.length === 0">Este campo es requerido</small> -->
+                                </div>
+                                <div class="col-span-6 sm:col-span-3">
+                                    <label for="last_name" class="block text-sm font-medium text-gray-700">Apellido(s)*</label>
+                                    <input type="text" name="last_name" [(ngModel)]="last_name" id="last_name" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                    <!-- <small class="text-red-500 animate-bounce" *ngIf="names.length === 0">Este campo es requerido</small> -->
+                                </div>
+                                <div class="col-span-6 sm:col-span-3">
+                                    <label for="username" class="block text-sm font-medium text-gray-700">Nombre de usuario*</label>
+                                    <input type="text" name="username" id="username" [(ngModel)]="surnames" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                    <!-- <small class="text-red-500 animate-bounce" *ngIf="surnames.length === 0">Este campo es requerido</small> -->
+                                </div>
+
+
+
+                                <div class="col-span-6 sm:col-span-3">
+                                    <label for="document_type_id" class="block text-sm font-medium text-gray-700">Tipo de identificación*</label>
+                                    <select [(ngModel)]="document_type_id" name="document_type_id" class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                            <option selected disabled>Selecciona el tipo de identificación</option>
+                                          <option *ngFor="let d of documentTypes" [value]="d.id">{{d.name}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-span-6 sm:col-span-3 lg:col-span-3">
+                                    <label class="block text-sm font-medium text-gray-700">Numero de identificacion*</label>
+                                    <input type="number" [(ngModel)]="document" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                </div>
+                                <div class="col-span-6 sm:col-span-3">
+                                    <label for="gender" class="block text-sm font-medium text-gray-700">Género*</label>
+                                    <select [(ngModel)]="gender" name="gender" class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                          <option selected disabled>Selecciona el género del asesor</option>
+                                        <option *ngFor="let g of genders" [value]="g.id">{{g.name}}</option>
+                                  </select>
+                                </div>
+                                <div class="col-span-6 sm:col-span-3">
+                                    <label class="block text-sm font-medium text-gray-700">Telefono*</label>
+                                    <input type="number" [(ngModel)]="phone_number" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                    <small class="text-red-500 animate-bounce" *ngIf="phone_number.length > 10">Carácteres permitidos: 10</small>
+                                    <small class="text-red-600" *ngIf="this.phone_number.toString().length > 10">Este número no es válido</small>
+
+                                </div>
+                                <div class="col-span-6 sm:col-span-3">
+                                    <label for="email-address" class="block text-sm font-medium text-gray-700">Correo electronico*</label>
+                                    <input type="email" name="email-address" [(ngModel)]="email" id="email-address" (keyup)="validateEmail()" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    <small class="text-red-600" *ngIf="emailStatus ===  false">Este email no es válido </small>
+                                </div>
+
+                                <div class="col-span-6 sm:col-span-3 ">
+                                    <label for="address-user" class="block text-sm font-medium text-gray-700">Dirección de residencia*</label>
+                                    <input type="text" name="address-user" [(ngModel)]="address" id="address-user" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                </div>
+
+                                <div class="col-span-6 sm:col-span-3 ">
+                                    <label for="address-details-user" class="block text-sm font-medium text-gray-700">Detalles de la dirección*</label>
+                                    <input type="text" name="address-details-user" [(ngModel)]="address_detail" id="address-details-user" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                </div>
+                                <div class="col-span-6 sm:col-span-3 ">
+                                    <label for="country" class="block text-sm font-medium text-gray-700">País*</label>
+                                    <select id="country" [(ngModel)]="country" name="country" (change)="GetDpt(country)" class="disabled:bg-gray-100 disabled:cursor-not-allowed mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                                        <option *ngFor="let c of Countries" [value]="c.id"  >{{c.name}} </option>
+                                      </select>
+                                </div>
+
+                                <div class="col-span-6 sm:col-span-3 ">
+                                    <label for="department" class="block text-sm font-medium text-gray-700">Departamento*</label>
+                                    <select id="department" [(ngModel)]="dpt" [disabled]="Dpts.length === 0" (change)="GetMunicipality(dpt)" name="department" class="disabled:bg-gray-100 disabled:cursor-not-allowed mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                                        <option *ngFor="let d of Dpts" [value]="d.id"  >{{d.name}} </option>
+                                      </select>
+                                </div>
+
+                                <div class="col-span-6 sm:col-span-3 ">
+                                    <label for="municipality" class="block text-sm font-medium text-gray-700">Ciudad / Municipio*</label>
+                                    <select id="municipality" [(ngModel)]="municipality" [disabled]="Municipalities.length === 0" name="municipality" (change)="GetNeighborhood(municipality)" class="disabled:bg-gray-100 disabled:cursor-not-allowed mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                                        <option *ngFor="let m of Municipalities" [value]="m.id"  >{{m.name}} </option>
+                                      </select>
+                                </div>
+
+                                <div class="col-span-6 sm:col-span-3 ">
+                                    <label for="neighborhood" class="block text-sm font-medium text-gray-700">Barrio*</label>
+                                    <select id="neighborhood" [(ngModel)]="neighborhood" [disabled]="Neighborhoods.length === 0" name="neighborhood" class="disabled:bg-gray-100 disabled:cursor-not-allowed mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                                        <option *ngFor="let n of Neighborhoods" [value]="n.id">{{n.name}} </option>
+                                      </select>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="px-4 py-3 text-right bg-gray-50 sm:px-6">
+                            <button type="button" (click)="NewAdviser()" [disabled]="emailStatus === false || charge === true|| email.length === 0|| first_name.length === 0 || last_name.length === 0 || phone_number.length < 10 || surnames.length === 0 || gender.length === 0 " class="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm disabled:opacity-50 hover:bg-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                <span *ngIf="charge === false">Guardar </span>
+                                <span *ngIf="charge === true">Cargando...</span>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="hidden sm:block" aria-hidden="true">
+            <div class="py-5">
+                <div class="border-t border-gray-200"></div>
+            </div>
+        </div>
+
+    </div>
+</div>

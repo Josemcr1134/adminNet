@@ -1,0 +1,3 @@
+.th-item {
+    @apply inline-block min-w-full
+}

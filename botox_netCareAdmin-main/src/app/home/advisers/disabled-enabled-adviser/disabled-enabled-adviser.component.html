@@ -1,0 +1,50 @@
+<div class="mt-8">
+    <div class="max-w-6xl mx-auto  sm:px-6 ">
+
+
+        <div class="bg-white">
+
+            <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+
+                <div class="space-y-8 divide-y divide-gray-200">
+                    <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
+                        <div>
+                            <div>
+                                <div class="inline-flex" style="color: #6F6F6F;">
+                                  <svg xmlns="http://www.w3.org/2000/svg" routerLink="/Dashboard/advisers/listAdviser" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                                  </svg>
+                                  <h2 class="text-xl  mb-4 font-semibold">Asesores</h2>
+                                </div>
+                                <p class="mt-1 max-w-2xl text-sm text-gray-500"><span *ngIf="f_type == 'disabled'">Inhabilita</span> <span *ngIf="f_type == 'enabled'">Habilita</span> este asesor </p>
+                            </div>
+
+                            <div class="mt-6 sm:mt-5 space-y-6 sm:space-y-5">
+                                <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                    <label for="about" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> Razón </label>
+                                    <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                        <p class="mb-2 text-sm text-gray-500">Este mensaje se mostrará en la vista del asesor.</p>
+
+                                        <textarea [(ngModel)]="reason" id="about" name="about" rows="3" class="max-w-lg shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md"></textarea>
+                                        <p class="mt-2 text-sm text-gray-500">Describe brevemente el motivo de esta decisión.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                    <div class="pt-5">
+                        <div class="flex justify-end">
+                            <button type="button" [routerLink]="['/Dashboard/advisers/listAdviser']" class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Cancelar</button>
+                            <button *ngIf="f_type == 'enabled'" type="button" (click)="UpdateAdviser('enabled')" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"><span  >Habilitar</span></button>
+                            <button *ngIf="f_type == 'disabled'" type="button" (click)="UpdateAdviser('disabled')" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"><span >Inhabilitar</span> </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
