@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  base_url: 'https://pygfurughz.hidoctor.app'
+  base_url: 'https://pygfurughz.hidoctor.app/api'
 };
